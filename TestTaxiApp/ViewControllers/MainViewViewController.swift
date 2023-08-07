@@ -69,7 +69,7 @@ class MainViewViewController: UIViewController {
 
 extension MainViewViewController: CollectionViewMethods {
     var ordersCount: Int {
-        return viewModel.orders.count
+        return viewModel.ordersCount
     }
     
     var cellViewModels: [MainViewCollectionViewCellViewModel] {

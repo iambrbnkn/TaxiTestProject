@@ -24,7 +24,7 @@ final class MainViewViewModel: NSObject, CollectionViewMethods {
     
     let url = "https://www.roxiemobile.ru/careers/test/orders.json"
     
-    var orders: [TaxiOrder] = [] {
+    private var orders: [TaxiOrder] = [] {
         didSet {
             for order in orders {
                 let viewModels = MainViewCollectionViewCellViewModel(startCityLabel: order.startAddress.city, startAddressLabel: order.startAddress.address)
