@@ -7,6 +7,7 @@
 
 import UIKit
 
+// TODO: - Таблица не скролл
 class MainViewViewController: UIViewController {
     
     private let viewModel = MainViewViewModel()
@@ -23,6 +24,8 @@ class MainViewViewController: UIViewController {
         return collectionView
     }()
     
+    // TODO: - Переименовать
+    // TODO: - Добавить в lazy
     private let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .large)
         spinner.hidesWhenStopped = true
@@ -30,6 +33,7 @@ class MainViewViewController: UIViewController {
         return spinner
     }()
     
+    // TODO: - Перенести добавление вьюх и констрейнтов во вью дид лоад
     override func loadView() {
         super.loadView()
         view.addSubviews(collectionView, spinner)
@@ -106,6 +110,7 @@ extension MainViewViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainViewCollectionViewCell.cellID, for: indexPath) as? MainViewCollectionViewCell else {
+            // TODO: - Убрать fatalError
             fatalError()
         }
         // Need to get array of cellViewModels or

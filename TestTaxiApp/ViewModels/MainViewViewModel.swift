@@ -18,6 +18,10 @@ protocol CollectionViewMethods: AnyObject {
     
 }
 
+// TODO: - Разобраться с уровнями доступа
+// TODO: - Нарушен порядок уровней доступа
+// TODO: - Нейминг
+// TODO: - Зачем NSObject
 final class MainViewViewModel: NSObject, CollectionViewMethods {
     
     public weak var delegate: MainViewViewModelDelegate?
@@ -50,6 +54,7 @@ final class MainViewViewModel: NSObject, CollectionViewMethods {
                 }
                 print(result)
             case .failure(let error):
+                // TODO: - Добавить обработку ошибок
                 print(String(describing: error))
             }
         }
