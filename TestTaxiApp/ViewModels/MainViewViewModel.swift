@@ -12,18 +12,19 @@ protocol MainViewViewModelDelegate: AnyObject {
     func didLoadInitialOrders()
 }
 
-protocol MainViewViewModelProtocol {
-    var orders: [TaxiOrder] { get }
-    func fetchOrders(completion: @escaping() -> Void)
+protocol CollectionViewMethods: AnyObject {
+    var ordersCount: Int { get }
+    var cellViewModels: [MainViewCollectionViewCellViewModel] { get }
+    
 }
 
-final class MainViewViewModel: NSObject {
+final class MainViewViewModel: NSObject, CollectionViewMethods {
     
     public weak var delegate: MainViewViewModelDelegate?
     
     let url = "https://www.roxiemobile.ru/careers/test/orders.json"
     
-    private var orders: [TaxiOrder] = [] {
+    var orders: [TaxiOrder] = [] {
         didSet {
             for order in orders {
                 let viewModels = MainViewCollectionViewCellViewModel(startCityLabel: order.startAddress.city, startAddressLabel: order.startAddress.address)
@@ -32,7 +33,11 @@ final class MainViewViewModel: NSObject {
         }
     }
     
-    private var cellViewModels: [MainViewCollectionViewCellViewModel] = []
+    public var ordersCount: Int {
+        return orders.count
+    }
+    
+    var cellViewModels: [MainViewCollectionViewCellViewModel] = []
     
     public func fetchOrders() {
         ApiService.apiService.execute(url, expecting: [TaxiOrder].self) { [unowned self] result in
@@ -51,24 +56,3 @@ final class MainViewViewModel: NSObject {
     }
 }
 
-extension MainViewViewModel: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return orders.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainViewCollectionViewCell.cellID, for: indexPath) as? MainViewCollectionViewCell else {
-            fatalError()
-        }
-        cell.configure(with: cellViewModels[indexPath.row])
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let bounds = collectionView.bounds
-        let width = bounds.width - 32
-        
-        return CGSize(width: width, height: 150)
-    }
-}
