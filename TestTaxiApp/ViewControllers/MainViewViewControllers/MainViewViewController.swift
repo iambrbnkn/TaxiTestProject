@@ -10,9 +10,10 @@ import UIKit
 // TODO: - Таблица не скролл
 class MainViewViewController: UIViewController {
     
-    private let viewModel = MainViewViewModel()
+    private let viewModel: CollectionViewMethods = MainViewViewModel()
+    
 
-    private let collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
@@ -20,42 +21,44 @@ class MainViewViewController: UIViewController {
         collectionView.isHidden = true
         collectionView.alpha = 0
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(MainViewCollectionViewCell.self, forCellWithReuseIdentifier: MainViewCollectionViewCell.cellID)
+        collectionView.register(MainViewCollectionViewCell.self, forCellWithReuseIdentifier: MainViewCollectionViewCell.Constants.cellID)
         return collectionView
     }()
     
-    // TODO: - Переименовать
-    // TODO: - Добавить в lazy
-    private let spinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView(style: .large)
-        spinner.hidesWhenStopped = true
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        return spinner
+    // TODO: - Переименовать +
+    // TODO: - Добавить в lazy +
+    private lazy var activityIndicatorView: UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView(style: .large)
+        activityIndicatorView.hidesWhenStopped = true
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicatorView
     }()
     
-    // TODO: - Перенести добавление вьюх и констрейнтов во вью дид лоад
-    override func loadView() {
-        super.loadView()
-        view.addSubviews(collectionView, spinner)
-        addConstraints()
-    }
+    // TODO: - Перенести добавление вьюх и констрейнтов во вью дид лоад +
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        title = "Taxi Order List"
+        activityIndicatorView.startAnimating()
+        setupUI()
         viewModel.delegate = self
         viewModel.fetchOrders()
+    }
+    
+    private func setupUI() {
+        view.backgroundColor = .systemBackground
+        title = "Taxi Order List"
+        view.addSubviews(collectionView, activityIndicatorView)
         setUpCollectionView()
+        addConstraints()
     }
     
     //Constraints
     private func addConstraints() {
         NSLayoutConstraint.activate([
-            spinner.widthAnchor.constraint(equalToConstant: 100),
-            spinner.heightAnchor.constraint(equalToConstant: 100),
-            spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            activityIndicatorView.widthAnchor.constraint(equalToConstant: 100),
+            activityIndicatorView.heightAnchor.constraint(equalToConstant: 100),
+            activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
@@ -64,29 +67,16 @@ class MainViewViewController: UIViewController {
         ])
     }
     
-    //
     private func setUpCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
     }
 }
 
-extension MainViewViewController: CollectionViewMethods {
-    var ordersCount: Int {
-        return viewModel.ordersCount
-    }
-    
-    var cellViewModels: [MainViewCollectionViewCellViewModel] {
-        return viewModel.cellViewModels
-    }
-    
-    
-}
-
 //MARK: - ViewCallback
 extension MainViewViewController: MainViewViewModelDelegate {
     func didLoadInitialOrders() {
-        spinner.stopAnimating()
+        activityIndicatorView.stopAnimating()
         collectionView.isHidden = false
         collectionView.reloadData()
         UIView.animate(withDuration: 0.4) {
@@ -105,17 +95,26 @@ extension MainViewViewController: UICollectionViewDelegate {
 extension MainViewViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // get TaxiOrders count from viewModel
-        return ordersCount
+        return viewModel.numberOfItems()
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainViewCollectionViewCell.cellID, for: indexPath) as? MainViewCollectionViewCell else {
-            // TODO: - Убрать fatalError
-            fatalError()
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: MainViewCollectionViewCell.Constants.cellID,
+            for: indexPath
+        ) as? MainViewCollectionViewCell else {
+            // TODO: - Убрать fatalError +
+            return UICollectionViewCell()
         }
-        // Need to get array of cellViewModels or
-        cell.configure(with: cellViewModels[indexPath.row])
+        cell.viewModel = viewModel.cellViewModel(forIndexPath: indexPath)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "cell", for: indexPath) as? MainViewCollectionViewHeader else {
+            return UICollectionReusableView()
+        }
+        return headerView
     }
 }
 

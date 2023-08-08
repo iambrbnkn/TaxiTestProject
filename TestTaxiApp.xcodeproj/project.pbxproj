@@ -11,14 +11,16 @@
 		FA5ADC862A7A1F70003B8A4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5ADC852A7A1F70003B8A4C /* SceneDelegate.swift */; };
 		FA5ADC8D2A7A1F71003B8A4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5ADC8C2A7A1F71003B8A4C /* Assets.xcassets */; };
 		FA5ADC902A7A1F71003B8A4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5ADC8E2A7A1F71003B8A4C /* LaunchScreen.storyboard */; };
-		FA5ADCA12A7A239C003B8A4C /* MainViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5ADCA02A7A239C003B8A4C /* MainViewTableViewCell.swift */; };
+		FA5ADCA12A7A239C003B8A4C /* MainViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5ADCA02A7A239C003B8A4C /* MainViewCollectionViewCell.swift */; };
 		FA5ADCAC2A7A2E73003B8A4C /* OrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5ADCAB2A7A2E73003B8A4C /* OrderDetailsViewController.swift */; };
 		FA5ADCAE2A7A3424003B8A4C /* TaxiOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5ADCAD2A7A3424003B8A4C /* TaxiOrder.swift */; };
 		FA5ADCB92A7A488A003B8A4C /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5ADCB82A7A488A003B8A4C /* MainViewViewModel.swift */; };
 		FA6201F92A7A9CB400773EBC /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6201F82A7A9CB400773EBC /* ApiService.swift */; };
 		FA6201FD2A7AA73A00773EBC /* MainViewCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6201FC2A7AA73A00773EBC /* MainViewCollectionViewCellViewModel.swift */; };
 		FA6202012A810B2A00773EBC /* MainViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6202002A810B2A00773EBC /* MainViewViewController.swift */; };
-		FA6202042A810D4600773EBC /* UIView + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6202032A810D4600773EBC /* UIView + extension.swift */; };
+		FA6202042A810D4600773EBC /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6202032A810D4600773EBC /* UIView+extension.swift */; };
+		FA6202092A827AFF00773EBC /* MainViewCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6202082A827AFF00773EBC /* MainViewCollectionViewHeader.swift */; };
+		FA62020B2A827EAE00773EBC /* MainViewCollectionViewSectionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62020A2A827EAE00773EBC /* MainViewCollectionViewSectionHeaderViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,14 +30,16 @@
 		FA5ADC8C2A7A1F71003B8A4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA5ADC8F2A7A1F71003B8A4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA5ADC912A7A1F71003B8A4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA5ADCA02A7A239C003B8A4C /* MainViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewTableViewCell.swift; sourceTree = "<group>"; };
+		FA5ADCA02A7A239C003B8A4C /* MainViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA5ADCAB2A7A2E73003B8A4C /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewController.swift; sourceTree = "<group>"; };
 		FA5ADCAD2A7A3424003B8A4C /* TaxiOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiOrder.swift; sourceTree = "<group>"; };
 		FA5ADCB82A7A488A003B8A4C /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
 		FA6201F82A7A9CB400773EBC /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		FA6201FC2A7AA73A00773EBC /* MainViewCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		FA6202002A810B2A00773EBC /* MainViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewController.swift; sourceTree = "<group>"; };
-		FA6202032A810D4600773EBC /* UIView + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + extension.swift"; sourceTree = "<group>"; };
+		FA6202032A810D4600773EBC /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
+		FA6202082A827AFF00773EBC /* MainViewCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCollectionViewHeader.swift; sourceTree = "<group>"; };
+		FA62020A2A827EAE00773EBC /* MainViewCollectionViewSectionHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCollectionViewSectionHeaderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +105,7 @@
 		FA5ADC9A2A7A22F5003B8A4C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				FA5ADCB82A7A488A003B8A4C /* MainViewViewModel.swift */,
-				FA6201FC2A7AA73A00773EBC /* MainViewCollectionViewCellViewModel.swift */,
+				FA6202062A82154F00773EBC /* MainViewViewModels */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -118,9 +121,8 @@
 		FA5ADCA62A7A2CD3003B8A4C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA6202052A810FB300773EBC /* MainViewCollectionViewCell */,
-				FA5ADCAB2A7A2E73003B8A4C /* OrderDetailsViewController.swift */,
-				FA6202002A810B2A00773EBC /* MainViewViewController.swift */,
+				FA6202072A82159800773EBC /* OrderDetailsViewController */,
+				FA6202052A810FB300773EBC /* MainViewViewControllers */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -128,17 +130,37 @@
 		FA6202022A810D2600773EBC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FA6202032A810D4600773EBC /* UIView + extension.swift */,
+				FA6202032A810D4600773EBC /* UIView+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		FA6202052A810FB300773EBC /* MainViewCollectionViewCell */ = {
+		FA6202052A810FB300773EBC /* MainViewViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA5ADCA02A7A239C003B8A4C /* MainViewTableViewCell.swift */,
+				FA6202002A810B2A00773EBC /* MainViewViewController.swift */,
+				FA5ADCA02A7A239C003B8A4C /* MainViewCollectionViewCell.swift */,
+				FA6202082A827AFF00773EBC /* MainViewCollectionViewHeader.swift */,
 			);
-			path = MainViewCollectionViewCell;
+			path = MainViewViewControllers;
+			sourceTree = "<group>";
+		};
+		FA6202062A82154F00773EBC /* MainViewViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FA5ADCB82A7A488A003B8A4C /* MainViewViewModel.swift */,
+				FA6201FC2A7AA73A00773EBC /* MainViewCollectionViewCellViewModel.swift */,
+				FA62020A2A827EAE00773EBC /* MainViewCollectionViewSectionHeaderViewModel.swift */,
+			);
+			path = MainViewViewModels;
+			sourceTree = "<group>";
+		};
+		FA6202072A82159800773EBC /* OrderDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FA5ADCAB2A7A2E73003B8A4C /* OrderDetailsViewController.swift */,
+			);
+			path = OrderDetailsViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,14 +234,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA5ADCAC2A7A2E73003B8A4C /* OrderDetailsViewController.swift in Sources */,
-				FA6202042A810D4600773EBC /* UIView + extension.swift in Sources */,
+				FA6202042A810D4600773EBC /* UIView+extension.swift in Sources */,
 				FA6201FD2A7AA73A00773EBC /* MainViewCollectionViewCellViewModel.swift in Sources */,
+				FA6202092A827AFF00773EBC /* MainViewCollectionViewHeader.swift in Sources */,
 				FA5ADCB92A7A488A003B8A4C /* MainViewViewModel.swift in Sources */,
 				FA5ADC842A7A1F70003B8A4C /* AppDelegate.swift in Sources */,
 				FA5ADC862A7A1F70003B8A4C /* SceneDelegate.swift in Sources */,
-				FA5ADCA12A7A239C003B8A4C /* MainViewTableViewCell.swift in Sources */,
+				FA5ADCA12A7A239C003B8A4C /* MainViewCollectionViewCell.swift in Sources */,
 				FA6201F92A7A9CB400773EBC /* ApiService.swift in Sources */,
 				FA6202012A810B2A00773EBC /* MainViewViewController.swift in Sources */,
+				FA62020B2A827EAE00773EBC /* MainViewCollectionViewSectionHeaderViewModel.swift in Sources */,
 				FA5ADCAE2A7A3424003B8A4C /* TaxiOrder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

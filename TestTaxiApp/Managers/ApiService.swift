@@ -7,22 +7,21 @@
 
 import Foundation
 
-// TODO: - Добавить реализацию через протокол
+// TODO: - Добавить реализацию через протокол +
 protocol ApiServiceProtocol {
     func execute<T: Codable> (_ request: String, expecting type: T.Type, completion: @escaping(Result<T, Error>) -> Void)
 }
 
 final class ApiService: ApiServiceProtocol {
     
-    // TODO: - Убрать синглтон
-    static let apiService = ApiService()
+    // TODO: - Убрать синглтон +
     
     enum ApiServiceError: Error {
         case failedToCreateRequest
         case failedToGetData
     }
     
-    public func execute<T: Codable> (_ request: String, expecting type: T.Type, completion: @escaping(Result<T, Error>) -> Void) {
+    func execute<T: Codable> (_ request: String, expecting type: T.Type, completion: @escaping(Result<T, Error>) -> Void) {
         guard let url = URL(string: request) else {
             return
         }
@@ -32,9 +31,9 @@ final class ApiService: ApiServiceProtocol {
                 return
             }
             do {
-                let result = try JSONDecoder().decode(type.self, from: data)
-                //TODO:
-                print(result)
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let result = try decoder.decode(type.self, from: data)
                 completion(.success(result))
             } catch {
                 completion(.failure(error))
