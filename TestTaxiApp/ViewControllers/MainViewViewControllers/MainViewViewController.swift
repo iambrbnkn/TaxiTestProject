@@ -12,7 +12,6 @@ class MainViewViewController: UIViewController {
     
     private let viewModel: CollectionViewMethods = MainViewViewModel()
     
-
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -35,7 +34,7 @@ class MainViewViewController: UIViewController {
     }()
     
     // TODO: - Перенести добавление вьюх и констрейнтов во вью дид лоад +
-    
+    //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicatorView.startAnimating()
@@ -44,6 +43,7 @@ class MainViewViewController: UIViewController {
         viewModel.fetchOrders()
     }
     
+    //MARK: - Private Methods
     private func setupUI() {
         view.backgroundColor = .systemBackground
         title = "Taxi Order List"
@@ -87,14 +87,11 @@ extension MainViewViewController: MainViewViewModelDelegate {
  
 //MARK: - UICollectionViewDelegate
 extension MainViewViewController: UICollectionViewDelegate {
-    
-    
 }
 
 //MARK: - UICollectionViewDataSource
 extension MainViewViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // get TaxiOrders count from viewModel
         return viewModel.numberOfItems()
     }
 
@@ -118,11 +115,12 @@ extension MainViewViewController: UICollectionViewDataSource {
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension MainViewViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let bounds = collectionView.bounds
         let width = bounds.width - 32
         
-        return CGSize(width: width, height: 200)
+        return CGSize(width: width, height: 155)
     }
 }

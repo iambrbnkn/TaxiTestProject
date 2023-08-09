@@ -7,6 +7,7 @@
 
 import Foundation
 
+//MARK: - Protocol
 protocol MainViewCollectionViewCellViewModelProtocol: AnyObject {
     var startCityLabel: String { get }
     var startAddressLabel: String { get }
@@ -19,10 +20,12 @@ protocol MainViewCollectionViewCellViewModelProtocol: AnyObject {
 
 final class MainViewCollectionViewCellViewModel: MainViewCollectionViewCellViewModelProtocol {
     
+    //MARK: - Private
     private var order: TaxiOrder
     
     private var converter: PriceConverterProtocol = PriceConverter()
         
+    //MARK: - Initial variables
     var startCityLabel: String {
         return order.startAddress.city
     }
@@ -60,6 +63,7 @@ final class MainViewCollectionViewCellViewModel: MainViewCollectionViewCellViewM
         converter.convertShityNumber(from: order.price.amount, with: order.price.currency)
     }
     
+    //MARK: - Init
     init(order: TaxiOrder) {
         self.order = order
     }

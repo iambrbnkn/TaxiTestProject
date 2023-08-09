@@ -20,33 +20,23 @@ protocol CollectionViewMethods: AnyObject {
 }
 
 // TODO: - Разобраться с уровнями доступа +
-// TODO: - Нарушен порядок уровней доступа
+// TODO: - Нарушен порядок уровней доступа +
 // TODO: - Нейминг
 // TODO: - Зачем NSObject +
 final class MainViewViewModel: CollectionViewMethods {
     
+    //MARK: - Delegate
     weak var delegate: MainViewViewModelDelegate?
     
-    var sortedOrders: [Date] = []
-
-    private var orders: [TaxiOrder] = [] {
-        didSet {
-            for order in orders {
-                if sortedOrders.contains(order.orderTime) {
-                    sortedOrders.append(order.orderTime)
-                }
-            }
-        }
-    }
-    
-    
+    //MARK: - Private
     private var apiService: ApiServiceProtocol = ApiService()
+    
+    private var orders: [TaxiOrder] = []
     
     //MARK: - Methods
     func numberOfItems() -> Int {
         return orders.count
     }
-
 
     func cellViewModel(forIndexPath indexPath: IndexPath) -> MainViewCollectionViewCellViewModelProtocol? {
         let order = orders[indexPath.row]

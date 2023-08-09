@@ -7,11 +7,13 @@
 
 import Foundation
 
+//MARK: - Protocol
 protocol PriceConverterProtocol {
     func convertShityNumber(from priceInteger: Int, with code: String) -> String
 }
 
 final class PriceConverter: PriceConverterProtocol {
+
     func convertShityNumber(from priceInteger: Int, with code: String) -> String {
         let price = String(priceInteger)
         let lastDigits = price.suffix(from: price.index(price.endIndex, offsetBy: -2))
@@ -20,8 +22,7 @@ final class PriceConverter: PriceConverterProtocol {
         guard let convertedPrice = Double(newPrice) else {
             return "0"
         }
-        
-        
+        //NumberFormatter
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.currencyCode = code
@@ -29,6 +30,5 @@ final class PriceConverter: PriceConverterProtocol {
         
         let number = NSNumber(value: convertedPrice)
         return formatter.string(from: number)!
-        
     }
 }
