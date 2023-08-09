@@ -13,6 +13,7 @@ protocol MainViewCollectionViewCellViewModelProtocol: AnyObject {
     var endCityLabel: String { get }
     var endAddressLabel: String { get }
     var date: String { get }
+    var time: String { get }
     var price: String { get }
 }
 
@@ -20,6 +21,8 @@ final class MainViewCollectionViewCellViewModel: MainViewCollectionViewCellViewM
     
     private var order: TaxiOrder
     
+    private var converter: PriceConverterProtocol = PriceConverter()
+        
     var startCityLabel: String {
         return order.startAddress.city
     }
@@ -39,13 +42,22 @@ final class MainViewCollectionViewCellViewModel: MainViewCollectionViewCellViewM
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = .current
         dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .short
+        dateFormatter.timeStyle = .none
         let orderDate = dateFormatter.string(from: order.orderTime)
         return orderDate
     }
     
+    var time: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = .current
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .short
+        let time = dateFormatter.string(from: order.orderTime)
+        return time
+    }
+    
     var price: String {
-        return "\(order.price.amount) \(order.price.currency)"
+        converter.convertShityNumber(from: order.price.amount, with: order.price.currency)
     }
     
     init(order: TaxiOrder) {

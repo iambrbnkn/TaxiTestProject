@@ -21,6 +21,7 @@
 		FA6202042A810D4600773EBC /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6202032A810D4600773EBC /* UIView+extension.swift */; };
 		FA6202092A827AFF00773EBC /* MainViewCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6202082A827AFF00773EBC /* MainViewCollectionViewHeader.swift */; };
 		FA62020B2A827EAE00773EBC /* MainViewCollectionViewSectionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62020A2A827EAE00773EBC /* MainViewCollectionViewSectionHeaderViewModel.swift */; };
+		FA62020D2A82D33C00773EBC /* PriceConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62020C2A82D33C00773EBC /* PriceConverter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		FA6202032A810D4600773EBC /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
 		FA6202082A827AFF00773EBC /* MainViewCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCollectionViewHeader.swift; sourceTree = "<group>"; };
 		FA62020A2A827EAE00773EBC /* MainViewCollectionViewSectionHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCollectionViewSectionHeaderViewModel.swift; sourceTree = "<group>"; };
+		FA62020C2A82D33C00773EBC /* PriceConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceConverter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				FA6201F82A7A9CB400773EBC /* ApiService.swift */,
+				FA62020C2A82D33C00773EBC /* PriceConverter.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				FA6202092A827AFF00773EBC /* MainViewCollectionViewHeader.swift in Sources */,
 				FA5ADCB92A7A488A003B8A4C /* MainViewViewModel.swift in Sources */,
 				FA5ADC842A7A1F70003B8A4C /* AppDelegate.swift in Sources */,
+				FA62020D2A82D33C00773EBC /* PriceConverter.swift in Sources */,
 				FA5ADC862A7A1F70003B8A4C /* SceneDelegate.swift in Sources */,
 				FA5ADCA12A7A239C003B8A4C /* MainViewCollectionViewCell.swift in Sources */,
 				FA6201F92A7A9CB400773EBC /* ApiService.swift in Sources */,

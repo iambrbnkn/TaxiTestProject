@@ -10,10 +10,36 @@ import UIKit
 final class MainViewCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Add subviews
+    
+    private let startIconImage: UIImageView = {
+        let startIconImage = UIImageView()
+        startIconImage.image = UIImage(systemName: "s.circle")
+        startIconImage.contentMode = .scaleAspectFit
+        startIconImage.backgroundColor = .clear
+        startIconImage.translatesAutoresizingMaskIntoConstraints = false
+        return startIconImage
+    }()
+    
+    private let endIconImage: UIImageView = {
+        let endIconImage = UIImageView()
+        endIconImage.image = UIImage(systemName: "e.circle")
+        endIconImage.contentMode = .scaleAspectFit
+        endIconImage.backgroundColor = .clear
+        endIconImage.translatesAutoresizingMaskIntoConstraints = false
+        return endIconImage
+    }()
+
     private let startCityLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private let separatorView: UIView = {
+        let separatorView = UIView()
+        separatorView.backgroundColor = .secondarySystemBackground
+        separatorView.translatesAutoresizingMaskIntoConstraints = false
+        return separatorView
     }()
     
     private let startAddressLabel: UILabel = {
@@ -23,6 +49,15 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
     }()
     
     private let dateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.numberOfLines = 1
+        label.textColor = .label
+        return label
+    }()
+    
+    private let priceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -36,7 +71,8 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
             }
             startCityLabel.text = viewModel.startCityLabel
             startAddressLabel.text = viewModel.startAddressLabel
-            dateLabel.text = viewModel.date
+            dateLabel.text = "Поездка \(viewModel.date) в \(viewModel.time)"
+            priceLabel.text = viewModel.price
         }
     }
     
@@ -52,27 +88,39 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Private func
     private func setupUI() {
-        contentView.addSubviews(startCityLabel, startAddressLabel, dateLabel)
+        contentView.addSubviews(dateLabel, separatorView)
         addConstraint()
-        contentView.backgroundColor = .blue
+        setUpLayer()
     }
+    
+    private func setUpLayer() {
+        contentView.layer.cornerRadius = 8
+        contentView.layer.shadowColor = UIColor.label.cgColor
+        contentView.layer.cornerRadius = 4
+//        contentView.layer.shadowOffset = CGSize(width: -4, height: 4)
+        contentView.layer.shadowOpacity = 0.3
+        contentView.backgroundColor = .secondarySystemBackground
+    }
+    
+    
 
     private func addConstraint() {
         NSLayoutConstraint.activate([
-            startCityLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 6),
-            startCityLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -6),
-            startAddressLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 6),
-            startAddressLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -6),
-            dateLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -6),
-            dateLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 6),
+            dateLabel.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor, constant: 6),
+            dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: -6),
+            dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 6),
+            dateLabel.heightAnchor.constraint(equalToConstant: contentView.bounds.height / 10),
             
-            startCityLabel.heightAnchor.constraint(equalToConstant: 30),
-            startAddressLabel.heightAnchor.constraint(equalToConstant: 30),
-            dateLabel.heightAnchor.constraint(equalToConstant: 30),
+            separatorView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 6),
+            separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 2),
             
-            dateLabel.bottomAnchor.constraint(equalTo: startCityLabel.topAnchor),
-            startCityLabel.bottomAnchor.constraint(equalTo: startAddressLabel.topAnchor),
-            startAddressLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6),
+            startIconImage.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 8),
+            startIconImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 6),
+            startIconImage.heightAnchor.constraint(equalToConstant: 25),
+            startIconImage.widthAnchor.constraint(equalTo: startIconImage.heightAnchor),
+            startIconImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 6)
         ])
     }
 }

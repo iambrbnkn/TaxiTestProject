@@ -16,7 +16,7 @@ class MainViewViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 14, left: 10, bottom: 10, right: 10)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isHidden = true
         collectionView.alpha = 0
@@ -123,6 +123,6 @@ extension MainViewViewController: UICollectionViewDelegateFlowLayout {
         let bounds = collectionView.bounds
         let width = bounds.width - 32
         
-        return CGSize(width: width, height: 150)
+        return CGSize(width: width, height: 200)
     }
 }

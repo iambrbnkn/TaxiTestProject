@@ -27,7 +27,18 @@ final class MainViewViewModel: CollectionViewMethods {
     
     weak var delegate: MainViewViewModelDelegate?
     
-    private var orders: [TaxiOrder] = []
+    var sortedOrders: [Date] = []
+
+    private var orders: [TaxiOrder] = [] {
+        didSet {
+            for order in orders {
+                if sortedOrders.contains(order.orderTime) {
+                    sortedOrders.append(order.orderTime)
+                }
+            }
+        }
+    }
+    
     
     private var apiService: ApiServiceProtocol = ApiService()
     
@@ -35,6 +46,7 @@ final class MainViewViewModel: CollectionViewMethods {
     func numberOfItems() -> Int {
         return orders.count
     }
+
 
     func cellViewModel(forIndexPath indexPath: IndexPath) -> MainViewCollectionViewCellViewModelProtocol? {
         let order = orders[indexPath.row]
