@@ -16,16 +16,14 @@ protocol CollectionViewMethods: AnyObject {
     
     func numberOfItems() -> Int
     func fetchOrders() -> Void
-    func cellViewModel(forIndexPath indexPath: IndexPath) -> MainViewCollectionViewCellViewModelProtocol?
+    func cellViewModel(forIndexPath indexPath: IndexPath) -> MainViewCollectionViewCellViewModel?
+    func getDetailViewModel(forItemAt indexPath: IndexPath) -> DetailViewViewModelProtocol
 }
 
-// TODO: - Разобраться с уровнями доступа +
-// TODO: - Нарушен порядок уровней доступа +
 // TODO: - Нейминг
-// TODO: - Зачем NSObject +
 final class MainViewViewModel: CollectionViewMethods {
     
-    //MARK: - Delegate
+    //MARK: - Delegate MainViewViewModelDelegate
     weak var delegate: MainViewViewModelDelegate?
     
     //MARK: - Private
@@ -38,9 +36,13 @@ final class MainViewViewModel: CollectionViewMethods {
         return orders.count
     }
 
-    func cellViewModel(forIndexPath indexPath: IndexPath) -> MainViewCollectionViewCellViewModelProtocol? {
+    func cellViewModel(forIndexPath indexPath: IndexPath) -> MainViewCollectionViewCellViewModel? {
         let order = orders[indexPath.row]
         return MainViewCollectionViewCellViewModel(order: order)
+    }
+    
+    func getDetailViewModel(forItemAt indexPath: IndexPath) -> DetailViewViewModelProtocol {
+        return DetailViewViewModel(order: orders[indexPath.row])
     }
         
     func fetchOrders() {
@@ -61,7 +63,7 @@ final class MainViewViewModel: CollectionViewMethods {
     }
 }
 
-//MARK: - Constants extension
+//MARK: - Constants
 private extension MainViewViewModel {
     struct Constants {
        static let ordersUrl = "https://www.roxiemobile.ru/careers/test/orders.json"

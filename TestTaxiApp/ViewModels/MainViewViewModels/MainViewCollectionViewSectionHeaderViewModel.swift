@@ -19,7 +19,7 @@ final class MainViewCollectionViewSectionHeaderViewModel: MainViewCollectionView
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = .current
         dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
+        dateFormatter.timeStyle = .short
         let orderDate = dateFormatter.string(from: order.orderTime)
         return orderDate
     }

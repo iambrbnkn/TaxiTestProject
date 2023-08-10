@@ -7,7 +7,6 @@
 
 import UIKit
 
-// TODO: - Таблица не скролл
 class MainViewViewController: UIViewController {
     
     private let viewModel: CollectionViewMethods = MainViewViewModel()
@@ -24,8 +23,7 @@ class MainViewViewController: UIViewController {
         return collectionView
     }()
     
-    // TODO: - Переименовать +
-    // TODO: - Добавить в lazy +
+
     private lazy var activityIndicatorView: UIActivityIndicatorView = {
         let activityIndicatorView = UIActivityIndicatorView(style: .large)
         activityIndicatorView.hidesWhenStopped = true
@@ -33,8 +31,7 @@ class MainViewViewController: UIViewController {
         return activityIndicatorView
     }()
     
-    // TODO: - Перенести добавление вьюх и констрейнтов во вью дид лоад +
-    //MARK: - viewDidLoad
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicatorView.startAnimating()
@@ -73,7 +70,7 @@ class MainViewViewController: UIViewController {
     }
 }
 
-//MARK: - ViewCallback
+//MARK: - MainViewViewModelDelegate
 extension MainViewViewController: MainViewViewModelDelegate {
     func didLoadInitialOrders() {
         activityIndicatorView.stopAnimating()
@@ -85,11 +82,17 @@ extension MainViewViewController: MainViewViewModelDelegate {
     }
 }
  
-//MARK: - UICollectionViewDelegate
+//MARK: - Delegate
 extension MainViewViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let viewModel = viewModel.getDetailViewModel(forItemAt: indexPath)
+        let detailVC = OrderDetailsViewController(viewModel: viewModel)
+        detailVC.navigationItem.largeTitleDisplayMode = .always
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
-//MARK: - UICollectionViewDataSource
+//MARK: - DataSource
 extension MainViewViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfItems()
@@ -100,12 +103,12 @@ extension MainViewViewController: UICollectionViewDataSource {
             withReuseIdentifier: MainViewCollectionViewCell.Constants.cellID,
             for: indexPath
         ) as? MainViewCollectionViewCell else {
-            // TODO: - Убрать fatalError +
             return UICollectionViewCell()
         }
         cell.viewModel = viewModel.cellViewModel(forIndexPath: indexPath)
         return cell
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "cell", for: indexPath) as? MainViewCollectionViewHeader else {
@@ -115,7 +118,7 @@ extension MainViewViewController: UICollectionViewDataSource {
     }
 }
 
-//MARK: - UICollectionViewDelegateFlowLayout
+//MARK: - FlowLayout
 extension MainViewViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let bounds = collectionView.bounds

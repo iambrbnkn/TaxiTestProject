@@ -7,7 +7,6 @@
 
 import Foundation
 
-// TODO: - Добавить реализацию через протокол +
 //MARK: - Protocol
 protocol ApiServiceProtocol {
     func execute<T: Codable> (_ request: String, expecting type: T.Type, completion: @escaping(Result<T, Error>) -> Void)
