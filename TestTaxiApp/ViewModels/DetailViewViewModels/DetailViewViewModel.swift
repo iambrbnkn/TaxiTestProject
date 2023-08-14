@@ -6,8 +6,16 @@
 //
 
 import Foundation
+import Kingfisher
 
+//MARK: -  Delegate Protocol
+protocol DetailViewViewModelDelegate: AnyObject {
+    func setImage(_ image: UIImage) -> Void
+}
+
+//MARK: - VM Protocol
 protocol DetailViewViewModelProtocol {
+    var delegate: DetailViewViewModelDelegate? { get set }
     var regNumber: String { get }
     var modelName: String { get }
     var driverName: String { get }
@@ -18,20 +26,25 @@ protocol DetailViewViewModelProtocol {
     var date: String { get }
     var time: String { get }
     var price: String { get }
-//    var carImage: UIImage? { get }
+    var imageUrl: String { get }
+    
+    func fetchImage() -> Void
 }
 
 
 final class DetailViewViewModel: DetailViewViewModelProtocol {
     
-    //MARK: - Model
-    private var order: TaxiOrder
+    weak var delegate: DetailViewViewModelDelegate?
+    
+    private var imageManager: ImageServiceProtocol = ImageService()
+    
+    private let order: TaxiOrder
     
     //MARK: - Initial Variables
     var modelName: String {
         return order.vehicle.modelName
     }
-    
+            
     var imageUrl: String {
         return Constants.carImageBaseUrl + order.vehicle.photo
     }
@@ -58,6 +71,11 @@ final class DetailViewViewModel: DetailViewViewModelProtocol {
     
     var endAddress: String {
         return order.endAddress.address
+        
+    }
+    
+    func setOrder() -> TaxiOrder {
+        return self.order
     }
     
     var date: String {
@@ -85,6 +103,24 @@ final class DetailViewViewModel: DetailViewViewModelProtocol {
     //MARK: - LifeCycle
     init(order: TaxiOrder) {
         self.order = order
+    }
+    
+    func fetchImage() {
+        imageManager.getImage(with: imageUrl) { [weak self] result in
+            switch result {
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self?.delegate?.setImage(image)
+                }
+            case .failure:
+                guard let image = UIImage(named: "noImage.png", in: Bundle(for: type(of: self!)), with: nil) else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    self?.delegate?.setImage(image)
+                }
+            }
+        }
     }
 }
 

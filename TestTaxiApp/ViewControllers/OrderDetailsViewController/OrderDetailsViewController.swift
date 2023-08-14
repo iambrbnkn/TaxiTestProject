@@ -9,9 +9,15 @@ import UIKit
 
 final class OrderDetailsViewController: UIViewController {
     
-    let viewModel: DetailViewViewModelProtocol
+    private var viewModel: DetailViewViewModelProtocol
     
     //MARK: - Views
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
+    }()
     
     private let firstSubView: UIView = {
         let firstSubView = UIView()
@@ -41,7 +47,6 @@ final class OrderDetailsViewController: UIViewController {
     
     private let carImageView: UIImageView = {
         let carImageView = UIImageView()
-        carImageView.backgroundColor = .red
         carImageView.translatesAutoresizingMaskIntoConstraints = false
         carImageView.clipsToBounds = true
         carImageView.layer.cornerRadius = 8
@@ -144,14 +149,17 @@ final class OrderDetailsViewController: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.fetchImage()
         setupUI()
         configure(with: viewModel)
+        viewModel.delegate = self
     }
     
     //MARK: - Private Methods
     private func setupUI() {
         title = "Детали заказа"
         view.backgroundColor = .systemBackground
+        activityIndicator.startAnimating()
         view.addSubviews(firstSubView, secondSubView)
         firstSubView.addSubviews(
             dateLabel,
@@ -166,7 +174,8 @@ final class OrderDetailsViewController: UIViewController {
             driverName,
             modelName,
             regNumber,
-            carImageView
+            carImageView,
+            activityIndicator
         )
         addConstraints()
     }
@@ -233,10 +242,12 @@ final class OrderDetailsViewController: UIViewController {
             carImageView.leadingAnchor.constraint(equalTo: secondSubView.leadingAnchor, constant: 8),
             carImageView.trailingAnchor.constraint(equalTo: secondSubView.trailingAnchor, constant: -8),
             carImageView.bottomAnchor.constraint(equalTo: secondSubView.bottomAnchor, constant: -16),
-
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: carImageView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: carImageView.centerYAnchor),
         ])
     }
-    
+
     //MARK: - Configure with viewModel
     private func configure(with viewModel: DetailViewViewModelProtocol) {
         let viewModel = viewModel 
@@ -250,5 +261,13 @@ final class OrderDetailsViewController: UIViewController {
         self.driverName.text = "Водитель: \(viewModel.driverName)"
         self.modelName.text = "Марка авто: \(viewModel.modelName)"
         self.regNumber.text = "Регистрационный номер: \(viewModel.regNumber.uppercased())"
+    }
+}
+
+//MARK: -  Delegate Extension
+extension OrderDetailsViewController: DetailViewViewModelDelegate {
+    func setImage(_ image: UIImage) {
+        self.carImageView.image = image
+        activityIndicator.stopAnimating()
     }
 }

@@ -46,14 +46,14 @@ final class MainViewViewModel: CollectionViewMethods {
     }
         
     func fetchOrders() {
-        apiService.execute(Constants.ordersUrl, expecting: [TaxiOrder].self) { [unowned self] result in
+        apiService.execute(Constants.ordersUrl, expecting: [TaxiOrder].self) { [weak self] result in
             switch result {
             case .success(let responseModel):
-                self.orders = responseModel.sorted {
+                self?.orders = responseModel.sorted {
                     $0.orderTime > $1.orderTime
                 }
                 DispatchQueue.main.async {
-                    self.delegate?.didLoadInitialOrders()
+                    self?.delegate?.didLoadInitialOrders()
                 }
             case .failure(let error):
                 // TODO: - Добавить обработку ошибок

@@ -70,7 +70,7 @@ class MainViewViewController: UIViewController {
     }
 }
 
-//MARK: - MainViewViewModelDelegate
+//MARK: - Delegate
 extension MainViewViewController: MainViewViewModelDelegate {
     func didLoadInitialOrders() {
         activityIndicatorView.stopAnimating()
@@ -82,7 +82,7 @@ extension MainViewViewController: MainViewViewModelDelegate {
     }
 }
  
-//MARK: - Delegate
+//MARK: - CollectionView Delegate
 extension MainViewViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let viewModel = viewModel.getDetailViewModel(forItemAt: indexPath)
@@ -92,7 +92,7 @@ extension MainViewViewController: UICollectionViewDelegate {
     }
 }
 
-//MARK: - DataSource
+//MARK: - CollectionView DataSource
 extension MainViewViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfItems()
@@ -118,7 +118,7 @@ extension MainViewViewController: UICollectionViewDataSource {
     }
 }
 
-//MARK: - FlowLayout
+//MARK: - CollectionView FlowLayout
 extension MainViewViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let bounds = collectionView.bounds
