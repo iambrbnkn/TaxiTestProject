@@ -1,23 +1,17 @@
 //
-//  PriceConverter.swift
+//  Int+Extension.swift
 //  TestTaxiApp
 //
-//  Created by Vitaliy on 08.08.2023.
+//  Created by Vitaliy on 09.08.2023.
 //
 
 import Foundation
 
-//MARK: - Protocol
-protocol PriceConverterProtocol {
-    func convertShityNumber(from priceInteger: Int, with code: String) -> String
-}
-
-final class PriceConverter: PriceConverterProtocol {
-
-    func convertShityNumber(from priceInteger: Int, with code: String) -> String {
-        let price = String(priceInteger)
+extension Int {
+    func convertIntToString(with code: String) -> String {
+        let price = String(self)
         let lastDigits = price.suffix(from: price.index(price.endIndex, offsetBy: -2))
-        let firstDigits = priceInteger / 100
+        let firstDigits = self / 100
         let newPrice = "\(firstDigits).\(lastDigits)"
         guard let convertedPrice = Double(newPrice) else {
             return "0"
