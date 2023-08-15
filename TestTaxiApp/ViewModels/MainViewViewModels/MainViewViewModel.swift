@@ -9,6 +9,7 @@ import UIKit
 
 protocol MainViewViewModelDelegate: AnyObject {
     func didLoadInitialOrders()
+    func failToloadInitialOrders()
 }
 
 protocol CollectionViewMethods: AnyObject {
@@ -55,9 +56,10 @@ final class MainViewViewModel: CollectionViewMethods {
                 DispatchQueue.main.async {
                     self?.delegate?.didLoadInitialOrders()
                 }
-            case .failure(let error):
-                // TODO: - Добавить обработку ошибок
-                print(String(describing: error))
+            case .failure:
+                DispatchQueue.main.async {
+                    self?.delegate?.failToloadInitialOrders()
+                }
             }
         }
     }

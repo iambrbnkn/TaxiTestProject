@@ -11,6 +11,8 @@ class MainViewViewController: UIViewController {
     
     private let viewModel: CollectionViewMethods = MainViewViewModel()
     
+    private let noInternetView = NoInterrnetView()
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -37,6 +39,7 @@ class MainViewViewController: UIViewController {
         activityIndicatorView.startAnimating()
         setupUI()
         viewModel.delegate = self
+        noInternetView.noInterrnetViewDelegate = self
         viewModel.fetchOrders()
     }
     
@@ -44,7 +47,7 @@ class MainViewViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .systemBackground
         title = "Taxi Order List"
-        view.addSubviews(collectionView, activityIndicatorView)
+        view.addSubviews(collectionView, activityIndicatorView, noInternetView)
         setUpCollectionView()
         addConstraints()
     }
@@ -61,6 +64,11 @@ class MainViewViewController: UIViewController {
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            noInternetView.topAnchor.constraint(equalTo: view.topAnchor),
+            noInternetView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            noInternetView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            noInternetView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
     
@@ -71,14 +79,28 @@ class MainViewViewController: UIViewController {
 }
 
 //MARK: - Delegate
-extension MainViewViewController: MainViewViewModelDelegate {
+extension MainViewViewController: MainViewViewModelDelegate, NoInterrnetViewDelegate {
+    
+    
+    func failToloadInitialOrders() {
+        activityIndicatorView.stopAnimating()
+        noInternetView.isHidden = false
+    }
+    
     func didLoadInitialOrders() {
         activityIndicatorView.stopAnimating()
+        noInternetView.isHidden = true
         collectionView.isHidden = false
         collectionView.reloadData()
         UIView.animate(withDuration: 0.4) {
             self.collectionView.alpha = 1
         }
+    }
+    
+    func refreshButtonTapped() {
+        activityIndicatorView.startAnimating()
+        noInternetView.isHidden = true
+        viewModel.fetchOrders()
     }
 }
  
@@ -107,14 +129,6 @@ extension MainViewViewController: UICollectionViewDataSource {
         }
         cell.viewModel = viewModel.cellViewModel(forIndexPath: indexPath)
         return cell
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "cell", for: indexPath) as? MainViewCollectionViewHeader else {
-            return UICollectionReusableView()
-        }
-        return headerView
     }
 }
 
