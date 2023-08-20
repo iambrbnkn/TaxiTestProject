@@ -10,15 +10,19 @@ import UIKit
 
 class DefaultTheme: ThemeProtocol{
     var subViewsBackgroundColor: UIColor {
-        return UIColor.systemBackground
-    }
-    
-    var backgroundColor: UIColor {
         return UIColor.secondarySystemBackground
     }
     
+    var backgroundColor: UIColor {
+        return UIColor.systemBackground
+    }
+    
     var buttonTittleTextColor: UIColor {
-        return UIColor.label
+        return UIColor.systemRed
+    }
+    
+    var buttonBackgroundColor: UIColor {
+        return UIColor.systemRed
     }
     
     var primaryLabelTextColor: UIColor {
@@ -29,11 +33,7 @@ class DefaultTheme: ThemeProtocol{
         return UIColor.secondaryLabel
     }
     
-    var buttonBackgroundColor: UIColor {
-        return UIColor.systemRed
-    }
-    
     var labelBackgroundColor: UIColor {
-        return UIColor.secondarySystemBackground
+        return UIColor.clear
     }
 }

@@ -20,7 +20,7 @@ class MainViewViewController: UIViewController {
         return refreshControl
     }()
     
-    private var collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 14, left: 10, bottom: 10, right: 10)
@@ -36,7 +36,6 @@ class MainViewViewController: UIViewController {
         return collectionView
     }()
     
-
     private lazy var activityIndicatorView: UIActivityIndicatorView = {
         let activityIndicatorView = UIActivityIndicatorView(style: .large)
         activityIndicatorView.hidesWhenStopped = true
@@ -45,14 +44,15 @@ class MainViewViewController: UIViewController {
     }()
     
     //MARK: - LifeCycle
-  
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        collectionView.reloadData()
         collectionView.backgroundColor = .selectedBackgroundColor
-        
+        navigationController?.navigationBar.barTintColor = .selectedBackgroundColor
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.primaryLabelTextColor]
     }
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicatorView.startAnimating()
@@ -114,7 +114,6 @@ class MainViewViewController: UIViewController {
     private func didPullRefresh() {
         viewModel.fetchOrders()
     }
-    
     
     private func setupNavbarMenu() {
         title = "Taxi Order List"
@@ -192,6 +191,7 @@ extension MainViewViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         cell.viewModel = viewModel.cellViewModel(forIndexPath: indexPath)
+        cell.setupColors()
         return cell
     }
 }

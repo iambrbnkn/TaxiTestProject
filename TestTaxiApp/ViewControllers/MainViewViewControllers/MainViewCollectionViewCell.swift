@@ -48,7 +48,6 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.numberOfLines = 2
         label.font = .systemFont(ofSize: 12, weight: .regular)
-        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -57,7 +56,6 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.numberOfLines = 1
         label.font = .systemFont(ofSize: 14, weight: .medium)
-        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -66,7 +64,6 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.numberOfLines = 2
         label.font = .systemFont(ofSize: 12, weight: .regular)
-        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -76,7 +73,6 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.numberOfLines = 1
-        label.textColor = .label
         return label
     }()
     
@@ -106,7 +102,6 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .subviewBackgroundColor
         setupUI()
     }
     
@@ -138,7 +133,6 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 4
         contentView.layer.shadowOffset = CGSize(width: -2, height: -3)
         contentView.layer.shadowOpacity = 0.3
-        contentView.backgroundColor = .subviewBackgroundColor
     }
     
     //MARK: - Constraints
@@ -183,6 +177,11 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
             priceLabel.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 12),
             priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -6)
         ])
+    }
+    
+    func setupColors() {
+        startCityLabel.textColor = .primaryLabelTextColor
+        contentView.backgroundColor = .subviewBackgroundColor
     }
 }
 
