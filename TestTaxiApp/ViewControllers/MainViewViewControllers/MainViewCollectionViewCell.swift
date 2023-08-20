@@ -106,12 +106,14 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
+        contentView.backgroundColor = .subviewBackgroundColor
         setupUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError()
     }
+
     
     //MARK: - Private Methods
     private func setupUI() {
@@ -134,9 +136,9 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 8
         contentView.layer.shadowColor = UIColor.label.cgColor
         contentView.layer.cornerRadius = 4
-                contentView.layer.shadowOffset = CGSize(width: -2, height: -3)
+        contentView.layer.shadowOffset = CGSize(width: -2, height: -3)
         contentView.layer.shadowOpacity = 0.3
-        contentView.backgroundColor = .secondarySystemBackground
+        contentView.backgroundColor = .subviewBackgroundColor
     }
     
     //MARK: - Constraints

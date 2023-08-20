@@ -100,7 +100,7 @@ final class DetailViewViewModel: DetailViewViewModelProtocol {
         order.price.amount.convertIntToString(with: order.price.currency)
     }
     
-    //MARK: - LifeCycle
+    //MARK: - Init
     init(order: TaxiOrder) {
         self.order = order
     }

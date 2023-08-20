@@ -8,20 +8,31 @@
 import UIKit
 
 class MainViewViewController: UIViewController {
-    
+        
     private let viewModel: CollectionViewMethods = MainViewViewModel()
     
-    private let noInternetView = NoInterrnetView()
+    //MARK: - Views
+    private lazy var noInternetView = NoInterrnetView()
     
-    private lazy var collectionView: UICollectionView = {
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .label
+        return refreshControl
+    }()
+    
+    private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 14, left: 10, bottom: 10, right: 10)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isHidden = true
         collectionView.alpha = 0
+        collectionView.alwaysBounceVertical = true
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(MainViewCollectionViewCell.self, forCellWithReuseIdentifier: MainViewCollectionViewCell.Constants.cellID)
+        collectionView.register(
+            MainViewCollectionViewCell.self,
+            forCellWithReuseIdentifier: MainViewCollectionViewCell.Constants.cellID
+        )
         return collectionView
     }()
     
@@ -34,22 +45,34 @@ class MainViewViewController: UIViewController {
     }()
     
     //MARK: - LifeCycle
+  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView.backgroundColor = .selectedBackgroundColor
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicatorView.startAnimating()
         setupUI()
-        viewModel.delegate = self
         noInternetView.noInterrnetViewDelegate = self
+        viewModel.delegate = self
         viewModel.fetchOrders()
     }
     
     //MARK: - Private Methods
     private func setupUI() {
-        view.backgroundColor = .systemBackground
-        title = "Taxi Order List"
-        view.addSubviews(collectionView, activityIndicatorView, noInternetView)
+        view.addSubviews(
+            collectionView,
+            activityIndicatorView,
+            noInternetView
+        )
         setUpCollectionView()
         addConstraints()
+        setupRefresher()
+        setupNavbarMenu()
     }
     
     //Constraints
@@ -76,11 +99,39 @@ class MainViewViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
     }
+    
+    private func setupRefresher() {
+        collectionView.addSubview(refreshControl)
+        collectionView.refreshControl = refreshControl
+        collectionView.refreshControl?.addTarget(
+            self,
+            action: #selector(didPullRefresh),
+            for: .valueChanged
+        )
+    }
+    
+    @objc
+    private func didPullRefresh() {
+        viewModel.fetchOrders()
+    }
+    
+    
+    private func setupNavbarMenu() {
+        title = "Taxi Order List"
+        let barButtonMenu = UIMenu(title: "", children: [
+            UIAction(title: NSLocalizedString("Change Theme", comment: "Смена темы")) {_ in
+                let detailVC = ColorsViewController()
+                detailVC.navigationItem.largeTitleDisplayMode = .always
+                self.navigationController?.pushViewController(detailVC, animated: true)
+            },
+            UIAction(title: NSLocalizedString("Сredentials", comment: "Реквизиты")) {_ in },
+        ])
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, image: UIImage(systemName: "ellipsis.rectangle"), menu: barButtonMenu)
+    }
 }
 
 //MARK: - Delegate
 extension MainViewViewController: MainViewViewModelDelegate, NoInterrnetViewDelegate {
-    
     
     func failToloadInitialOrders() {
         activityIndicatorView.stopAnimating()
@@ -92,9 +143,10 @@ extension MainViewViewController: MainViewViewModelDelegate, NoInterrnetViewDele
         noInternetView.isHidden = true
         collectionView.isHidden = false
         collectionView.reloadData()
-        UIView.animate(withDuration: 0.4) {
+        UIView.animate(withDuration: 0.5) {
             self.collectionView.alpha = 1
         }
+        refreshControl.endRefreshing()
     }
     
     func refreshButtonTapped() {
@@ -111,6 +163,18 @@ extension MainViewViewController: UICollectionViewDelegate {
         let detailVC = OrderDetailsViewController(viewModel: viewModel)
         detailVC.navigationItem.largeTitleDisplayMode = .always
         navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath){
+            cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+            }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath){
+            cell.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
     }
 }
 

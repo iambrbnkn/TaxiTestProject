@@ -10,6 +10,16 @@
 		5BE5AE3230B7D05BD1239359 /* Pods_TestTaxiApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3694CB4C7BFEFD7836D223B8 /* Pods_TestTaxiApp.framework */; };
 		FA2C2F9F2A8667E80091C181 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2F9E2A8667E80091C181 /* ImageManager.swift */; };
 		FA2C2FA12A8B46FC0091C181 /* NoInterrnetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2FA02A8B46FC0091C181 /* NoInterrnetView.swift */; };
+		FA2C2FA62A8D4A060091C181 /* ColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2FA52A8D4A060091C181 /* ColorsViewController.swift */; };
+		FA2C2FAA2A8E22380091C181 /* ThemesEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2FA92A8E22380091C181 /* ThemesEnum.swift */; };
+		FA2C2FAC2A8E24AB0091C181 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2FAB2A8E24AB0091C181 /* ThemeManager.swift */; };
+		FA2C2FB02A8E31180091C181 /* ThemesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2FAF2A8E31180091C181 /* ThemesViewViewModel.swift */; };
+		FA2C2FDA2A9260170091C181 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2FD92A9260170091C181 /* UIColor+extension.swift */; };
+		FA2C2FDC2A92610E0091C181 /* DefaultTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2FDB2A92610E0091C181 /* DefaultTheme.swift */; };
+		FA2C2FDE2A9261180091C181 /* BlackTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2FDD2A9261180091C181 /* BlackTheme.swift */; };
+		FA2C2FE02A9261280091C181 /* WhiteTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2FDF2A9261280091C181 /* WhiteTheme.swift */; };
+		FA2C2FE22A9261320091C181 /* OrangeTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2FE12A9261320091C181 /* OrangeTheme.swift */; };
+		FA2C2FE42A9261E50091C181 /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2FE32A9261E50091C181 /* ThemeProtocol.swift */; };
 		FA5ADC842A7A1F70003B8A4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5ADC832A7A1F70003B8A4C /* AppDelegate.swift */; };
 		FA5ADC862A7A1F70003B8A4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5ADC852A7A1F70003B8A4C /* SceneDelegate.swift */; };
 		FA5ADC8D2A7A1F71003B8A4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5ADC8C2A7A1F71003B8A4C /* Assets.xcassets */; };
@@ -32,6 +42,16 @@
 		7B884AD3A10BC77BC92E9FD6 /* Pods-TestTaxiApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTaxiApp.debug.xcconfig"; path = "Target Support Files/Pods-TestTaxiApp/Pods-TestTaxiApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FA2C2F9E2A8667E80091C181 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		FA2C2FA02A8B46FC0091C181 /* NoInterrnetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInterrnetView.swift; sourceTree = "<group>"; };
+		FA2C2FA52A8D4A060091C181 /* ColorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsViewController.swift; sourceTree = "<group>"; };
+		FA2C2FA92A8E22380091C181 /* ThemesEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesEnum.swift; sourceTree = "<group>"; };
+		FA2C2FAB2A8E24AB0091C181 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		FA2C2FAF2A8E31180091C181 /* ThemesViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesViewViewModel.swift; sourceTree = "<group>"; };
+		FA2C2FD92A9260170091C181 /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
+		FA2C2FDB2A92610E0091C181 /* DefaultTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTheme.swift; sourceTree = "<group>"; };
+		FA2C2FDD2A9261180091C181 /* BlackTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackTheme.swift; sourceTree = "<group>"; };
+		FA2C2FDF2A9261280091C181 /* WhiteTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteTheme.swift; sourceTree = "<group>"; };
+		FA2C2FE12A9261320091C181 /* OrangeTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeTheme.swift; sourceTree = "<group>"; };
+		FA2C2FE32A9261E50091C181 /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
 		FA5ADC802A7A1F70003B8A4C /* TestTaxiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTaxiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5ADC832A7A1F70003B8A4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA5ADC852A7A1F70003B8A4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +99,27 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FA2C2FA72A8D4D6B0091C181 /* ColorsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FA2C2FA52A8D4A060091C181 /* ColorsViewController.swift */,
+			);
+			path = ColorsViewController;
+			sourceTree = "<group>";
+		};
+		FA2C2FA82A8E1B1D0091C181 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				FA2C2FA92A8E22380091C181 /* ThemesEnum.swift */,
+				FA2C2FDB2A92610E0091C181 /* DefaultTheme.swift */,
+				FA2C2FDD2A9261180091C181 /* BlackTheme.swift */,
+				FA2C2FDF2A9261280091C181 /* WhiteTheme.swift */,
+				FA2C2FE12A9261320091C181 /* OrangeTheme.swift */,
+				FA2C2FE32A9261E50091C181 /* ThemeProtocol.swift */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
 		FA5ADC772A7A1F6F003B8A4C = {
 			isa = PBXGroup;
 			children = (
@@ -100,8 +141,8 @@
 		FA5ADC822A7A1F70003B8A4C /* TestTaxiApp */ = {
 			isa = PBXGroup;
 			children = (
-				FA6202022A810D2600773EBC /* Extensions */,
 				FA5ADC972A7A20C1003B8A4C /* Resources */,
+				FA6202022A810D2600773EBC /* Extensions */,
 				FA5ADC9D2A7A2316003B8A4C /* Managers */,
 				FA5ADC9A2A7A22F5003B8A4C /* ViewModels */,
 				FA5ADC992A7A22EB003B8A4C /* Models */,
@@ -135,6 +176,7 @@
 			children = (
 				FA62020E2A83A28100773EBC /* DetailViewViewModels */,
 				FA6202062A82154F00773EBC /* MainViewViewModels */,
+				FA2C2FAF2A8E31180091C181 /* ThemesViewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -142,7 +184,9 @@
 		FA5ADC9D2A7A2316003B8A4C /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				FA2C2FA82A8E1B1D0091C181 /* Themes */,
 				FA6201F82A7A9CB400773EBC /* ApiService.swift */,
+				FA2C2FAB2A8E24AB0091C181 /* ThemeManager.swift */,
 				FA2C2F9E2A8667E80091C181 /* ImageManager.swift */,
 			);
 			path = Managers;
@@ -151,6 +195,7 @@
 		FA5ADCA62A7A2CD3003B8A4C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA2C2FA72A8D4D6B0091C181 /* ColorsViewController */,
 				FA6202072A82159800773EBC /* OrderDetailsViewController */,
 				FA6202052A810FB300773EBC /* MainViewViewControllers */,
 			);
@@ -162,6 +207,7 @@
 			children = (
 				FA6202032A810D4600773EBC /* UIView+extension.swift */,
 				FA6202152A842D7D00773EBC /* Int+Extension.swift */,
+				FA2C2FD92A9260170091C181 /* UIColor+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -318,17 +364,27 @@
 				FA6202162A842D7D00773EBC /* Int+Extension.swift in Sources */,
 				FA5ADCAC2A7A2E73003B8A4C /* OrderDetailsViewController.swift in Sources */,
 				FA6202042A810D4600773EBC /* UIView+extension.swift in Sources */,
+				FA2C2FE42A9261E50091C181 /* ThemeProtocol.swift in Sources */,
 				FA6201FD2A7AA73A00773EBC /* MainViewCollectionViewCellViewModel.swift in Sources */,
+				FA2C2FE22A9261320091C181 /* OrangeTheme.swift in Sources */,
 				FA5ADCB92A7A488A003B8A4C /* MainViewViewModel.swift in Sources */,
+				FA2C2FAA2A8E22380091C181 /* ThemesEnum.swift in Sources */,
 				FA2C2FA12A8B46FC0091C181 /* NoInterrnetView.swift in Sources */,
 				FA2C2F9F2A8667E80091C181 /* ImageManager.swift in Sources */,
 				FA5ADC842A7A1F70003B8A4C /* AppDelegate.swift in Sources */,
+				FA2C2FE02A9261280091C181 /* WhiteTheme.swift in Sources */,
 				FA5ADC862A7A1F70003B8A4C /* SceneDelegate.swift in Sources */,
+				FA2C2FAC2A8E24AB0091C181 /* ThemeManager.swift in Sources */,
 				FA5ADCA12A7A239C003B8A4C /* MainViewCollectionViewCell.swift in Sources */,
+				FA2C2FDC2A92610E0091C181 /* DefaultTheme.swift in Sources */,
+				FA2C2FA62A8D4A060091C181 /* ColorsViewController.swift in Sources */,
 				FA6201F92A7A9CB400773EBC /* ApiService.swift in Sources */,
 				FA6202012A810B2A00773EBC /* MainViewViewController.swift in Sources */,
+				FA2C2FB02A8E31180091C181 /* ThemesViewViewModel.swift in Sources */,
 				FA6202102A83A2B700773EBC /* DetailViewViewModel.swift in Sources */,
 				FA5ADCAE2A7A3424003B8A4C /* TaxiOrder.swift in Sources */,
+				FA2C2FDA2A9260170091C181 /* UIColor+extension.swift in Sources */,
+				FA2C2FDE2A9261180091C181 /* BlackTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,7 +533,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -508,7 +564,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

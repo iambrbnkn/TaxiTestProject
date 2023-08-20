@@ -23,7 +23,7 @@ final class OrderDetailsViewController: UIViewController {
         let firstSubView = UIView()
         firstSubView.translatesAutoresizingMaskIntoConstraints = false
         firstSubView.layer.cornerRadius = 8
-        firstSubView.backgroundColor = .secondarySystemBackground
+        firstSubView.backgroundColor = .subviewBackgroundColor
         return firstSubView
     }()
     
@@ -31,7 +31,7 @@ final class OrderDetailsViewController: UIViewController {
         let secondSubView = UIView()
         secondSubView.translatesAutoresizingMaskIntoConstraints = false
         secondSubView.layer.cornerRadius = 8
-        secondSubView.backgroundColor = .secondarySystemBackground
+        secondSubView.backgroundColor = .subviewBackgroundColor
         return secondSubView
     }()
     
@@ -50,7 +50,7 @@ final class OrderDetailsViewController: UIViewController {
         carImageView.translatesAutoresizingMaskIntoConstraints = false
         carImageView.clipsToBounds = true
         carImageView.layer.cornerRadius = 8
-        carImageView.contentMode = .scaleAspectFit
+        carImageView.contentMode = .scaleAspectFill
         return carImageView
     }()
     
@@ -66,7 +66,8 @@ final class OrderDetailsViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 1
         label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = .label
+        label.textColor = .primaryLabelTextColor
+        label.backgroundColor = .labelBackgroundColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -75,7 +76,8 @@ final class OrderDetailsViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 2
         label.font = .systemFont(ofSize: 14, weight: .regular)
-        label.textColor = .label
+        label.textColor = .primaryLabelTextColor
+        label.backgroundColor = .labelBackgroundColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -84,7 +86,8 @@ final class OrderDetailsViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 1
         label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = .label
+        label.textColor = .primaryLabelTextColor
+        label.backgroundColor = .labelBackgroundColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -92,8 +95,9 @@ final class OrderDetailsViewController: UIViewController {
     private let endAddressLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
+        label.textColor = .primaryLabelTextColor
+        label.backgroundColor = .labelBackgroundColor
         label.font = .systemFont(ofSize: 14, weight: .regular)
-        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -101,16 +105,19 @@ final class OrderDetailsViewController: UIViewController {
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.textColor = .primaryLabelTextColor
+        label.backgroundColor = .labelBackgroundColor
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.numberOfLines = 1
-        label.textColor = .label
         return label
     }()
     
     private let priceLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.textColor = .primaryLabelTextColor
+        label.backgroundColor = .labelBackgroundColor
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -119,12 +126,16 @@ final class OrderDetailsViewController: UIViewController {
     private let regNumber: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.textColor = .primaryLabelTextColor
+        label.backgroundColor = .labelBackgroundColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let modelName: UILabel = {
         let label = UILabel()
+        label.textColor = .primaryLabelTextColor
+        label.backgroundColor = .labelBackgroundColor
         label.font = .systemFont(ofSize: 14, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -132,6 +143,8 @@ final class OrderDetailsViewController: UIViewController {
     
     private let driverName: UILabel = {
         let label = UILabel()
+        label.textColor = .primaryLabelTextColor
+        label.backgroundColor = .labelBackgroundColor
         label.font = .systemFont(ofSize: 14, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -158,7 +171,7 @@ final class OrderDetailsViewController: UIViewController {
     //MARK: - Private Methods
     private func setupUI() {
         title = "Детали заказа"
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .secondarySystemBackground
         activityIndicator.startAnimating()
         view.addSubviews(firstSubView, secondSubView)
         firstSubView.addSubviews(
@@ -178,6 +191,7 @@ final class OrderDetailsViewController: UIViewController {
             activityIndicator
         )
         addConstraints()
+        setupLayer()
     }
     
     //MARK: - Constraints
@@ -246,6 +260,18 @@ final class OrderDetailsViewController: UIViewController {
             activityIndicator.centerXAnchor.constraint(equalTo: carImageView.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: carImageView.centerYAnchor),
         ])
+    }
+    
+    private func setupLayer() {
+        firstSubView.layer.shadowColor = UIColor.label.cgColor
+        firstSubView.layer.cornerRadius = 4
+        firstSubView.layer.shadowOffset = CGSize(width: -2, height: -3)
+        firstSubView.layer.shadowOpacity = 0.3
+
+        secondSubView.layer.shadowColor = UIColor.label.cgColor
+        secondSubView.layer.cornerRadius = 4
+        secondSubView.layer.shadowOffset = CGSize(width: -2, height: -3)
+        secondSubView.layer.shadowOpacity = 0.3
     }
 
     //MARK: - Configure with viewModel
