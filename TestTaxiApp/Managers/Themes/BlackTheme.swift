@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 
 class BlackTheme: ThemeProtocol{
+    
     var subViewsBackgroundColor: UIColor {
-        return UIColor.systemGray
+        return UIColor.init(red: 84/255, green: 84/255, blue: 86/255, alpha: 1)
     }
     
     var backgroundColor: UIColor {
@@ -18,7 +19,7 @@ class BlackTheme: ThemeProtocol{
     }
     
     var buttonTittleTextColor: UIColor {
-        return UIColor.label
+        return UIColor.black
     }
     
     var primaryLabelTextColor: UIColor {
@@ -26,7 +27,7 @@ class BlackTheme: ThemeProtocol{
     }
     
     var secondaryLabelTextColor: UIColor  {
-        return UIColor.init(white: 1, alpha: 0.9)
+        return UIColor.init(red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
     }
     
     var buttonBackgroundColor: UIColor  {
@@ -34,7 +35,12 @@ class BlackTheme: ThemeProtocol{
     }
     
     var labelBackgroundColor: UIColor {
-        return UIColor.black
+        return UIColor.clear
     }
+    
+    var iconColor: UIColor {
+        return UIColor.white
+    }
+
 }
 

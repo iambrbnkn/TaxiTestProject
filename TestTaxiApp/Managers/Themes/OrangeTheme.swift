@@ -9,34 +9,36 @@ import Foundation
 import UIKit
 
 class OrangeTheme: ThemeProtocol {
+    
     var subViewsBackgroundColor: UIColor {
-        return UIColor.init(red: 255, green: 204, blue: 153, alpha: 1)
+        return UIColor.init(red: 255/255, green: 149/255, blue: 0/255, alpha: 1)
     }
     
     var backgroundColor: UIColor {
-        return UIColor.init(red: 255, green: 102, blue: 0, alpha: 1)
+        return UIColor.init(red: 255/255, green: 159/255, blue: 10/255, alpha: 1)
     }
     
     var buttonTittleTextColor: UIColor {
-        return UIColor.white
+        return UIColor.black
     }
     
     var primaryLabelTextColor: UIColor {
-        return UIColor.white
+        return UIColor.black
     }
     
     var secondaryLabelTextColor: UIColor {
-        return UIColor.init(white: 1, alpha: 0.9)
+        return UIColor.black
     }
     
     var buttonBackgroundColor: UIColor {
-        return UIColor.init(red: 255, green: 79, blue: 0, alpha: 1)
+        return UIColor.init(red: 255/255, green: 59/255, blue: 48/255, alpha: 1)
     }
     
     var labelBackgroundColor: UIColor {
-        return UIColor.init(red: 255, green: 204, blue: 153, alpha: 1)
+        return UIColor.clear
     }
     
-    
-   
+    var iconColor: UIColor {
+        return UIColor.black
+    }
 }

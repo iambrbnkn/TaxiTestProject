@@ -40,7 +40,7 @@ final class OrderDetailsViewController: UIViewController {
         directionIconView.image = UIImage(systemName: "arrow.down")
         directionIconView.contentMode = .scaleAspectFit
         directionIconView.backgroundColor = .clear
-        directionIconView.tintColor = .black
+        directionIconView.tintColor = .iconColor
         directionIconView.translatesAutoresizingMaskIntoConstraints = false
         return directionIconView
     }()
@@ -56,7 +56,7 @@ final class OrderDetailsViewController: UIViewController {
     
     private let separatorView: UIView = {
         let separatorView = UIView()
-        separatorView.backgroundColor = .secondaryLabel
+        separatorView.backgroundColor = .selectedBackgroundColor
         separatorView.translatesAutoresizingMaskIntoConstraints = false
         return separatorView
     }()
@@ -171,7 +171,7 @@ final class OrderDetailsViewController: UIViewController {
     //MARK: - Private Methods
     private func setupUI() {
         title = "Детали заказа"
-        view.backgroundColor = .secondarySystemBackground
+        view.backgroundColor = .selectedBackgroundColor
         activityIndicator.startAnimating()
         view.addSubviews(firstSubView, secondSubView)
         firstSubView.addSubviews(

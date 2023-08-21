@@ -181,7 +181,23 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
     
     func setupColors() {
         startCityLabel.textColor = .primaryLabelTextColor
+        startCityLabel.backgroundColor = .labelBackgroundColor
+        startAddressLabel.textColor = .primaryLabelTextColor
+        startAddressLabel.backgroundColor = .labelBackgroundColor
+        endCityLabel.textColor = .primaryLabelTextColor
+        endCityLabel.backgroundColor = .labelBackgroundColor
+        endAddressLabel.textColor = .primaryLabelTextColor
+        endAddressLabel.backgroundColor = .labelBackgroundColor
+        dateLabel.textColor = .primaryLabelTextColor
+        dateLabel.backgroundColor = .labelBackgroundColor
+        priceLabel.textColor = .primaryLabelTextColor
+        priceLabel.backgroundColor = .labelBackgroundColor
         contentView.backgroundColor = .subviewBackgroundColor
+        separatorView.backgroundColor = .selectedBackgroundColor
+        startIconImage.tintColor = .iconColor
+        endIconImage.tintColor = .iconColor
+        
+        
     }
 }
 

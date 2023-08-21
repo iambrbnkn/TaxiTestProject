@@ -51,6 +51,7 @@ class MainViewViewController: UIViewController {
         collectionView.backgroundColor = .selectedBackgroundColor
         navigationController?.navigationBar.barTintColor = .selectedBackgroundColor
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.primaryLabelTextColor]
+        
     }
    
     override func viewDidLoad() {
@@ -93,6 +94,10 @@ class MainViewViewController: UIViewController {
             noInternetView.rightAnchor.constraint(equalTo: view.rightAnchor),
             noInternetView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
+    }
+    
+    private func reloadUI() {
+        
     }
     
     private func setUpCollectionView() {

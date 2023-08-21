@@ -20,7 +20,7 @@ final class NoInterrnetView: UIView {
     private let iconView: UIImageView = {
         let iconView = UIImageView()
         iconView.contentMode = .scaleAspectFit
-        iconView.tintColor = .primaryLabelTextColor
+        iconView.tintColor = .iconColor
         iconView.translatesAutoresizingMaskIntoConstraints = false
         return iconView
     }()

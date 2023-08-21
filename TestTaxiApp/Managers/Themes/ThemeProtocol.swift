@@ -17,4 +17,5 @@ protocol ThemeProtocol: AnyObject {
     var secondaryLabelTextColor: UIColor { get }
     var buttonBackgroundColor: UIColor { get }
     var labelBackgroundColor: UIColor { get }
+    var iconColor: UIColor { get }
 }

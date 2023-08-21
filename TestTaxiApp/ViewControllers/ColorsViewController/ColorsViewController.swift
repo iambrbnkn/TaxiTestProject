@@ -13,7 +13,7 @@ class ColorsViewController: UIViewController {
     
     let titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.textColor = .primaryLabelTextColor
+        titleLabel.textColor = .secondaryLabelTextColor
         titleLabel.text = "What theme do you prefere?"
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = .systemFont(ofSize: 15, weight: .medium)
@@ -70,6 +70,7 @@ class ColorsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        reloadUI()
     }
     
     private func setupUI() {
@@ -124,6 +125,12 @@ class ColorsViewController: UIViewController {
             sender.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         }
         self.viewDidLoad()
+    }
+    
+    private func reloadUI() {
+        navigationController?.navigationBar.barTintColor = .selectedBackgroundColor
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.primaryLabelTextColor]
+        titleLabel.textColor = .secondaryLabelTextColor
     }
     
     private func animationForSelectedButton() {

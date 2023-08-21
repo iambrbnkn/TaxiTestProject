@@ -13,7 +13,6 @@
 		FA2C2FA62A8D4A060091C181 /* ColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2FA52A8D4A060091C181 /* ColorsViewController.swift */; };
 		FA2C2FAA2A8E22380091C181 /* ThemesEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2FA92A8E22380091C181 /* ThemesEnum.swift */; };
 		FA2C2FAC2A8E24AB0091C181 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2FAB2A8E24AB0091C181 /* ThemeManager.swift */; };
-		FA2C2FB02A8E31180091C181 /* ThemesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2FAF2A8E31180091C181 /* ThemesViewViewModel.swift */; };
 		FA2C2FDA2A9260170091C181 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2FD92A9260170091C181 /* UIColor+extension.swift */; };
 		FA2C2FDC2A92610E0091C181 /* DefaultTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2FDB2A92610E0091C181 /* DefaultTheme.swift */; };
 		FA2C2FDE2A9261180091C181 /* BlackTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C2FDD2A9261180091C181 /* BlackTheme.swift */; };
@@ -45,7 +44,6 @@
 		FA2C2FA52A8D4A060091C181 /* ColorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsViewController.swift; sourceTree = "<group>"; };
 		FA2C2FA92A8E22380091C181 /* ThemesEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesEnum.swift; sourceTree = "<group>"; };
 		FA2C2FAB2A8E24AB0091C181 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
-		FA2C2FAF2A8E31180091C181 /* ThemesViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesViewViewModel.swift; sourceTree = "<group>"; };
 		FA2C2FD92A9260170091C181 /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
 		FA2C2FDB2A92610E0091C181 /* DefaultTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTheme.swift; sourceTree = "<group>"; };
 		FA2C2FDD2A9261180091C181 /* BlackTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackTheme.swift; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 			children = (
 				FA62020E2A83A28100773EBC /* DetailViewViewModels */,
 				FA6202062A82154F00773EBC /* MainViewViewModels */,
-				FA2C2FAF2A8E31180091C181 /* ThemesViewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -380,7 +377,6 @@
 				FA2C2FA62A8D4A060091C181 /* ColorsViewController.swift in Sources */,
 				FA6201F92A7A9CB400773EBC /* ApiService.swift in Sources */,
 				FA6202012A810B2A00773EBC /* MainViewViewController.swift in Sources */,
-				FA2C2FB02A8E31180091C181 /* ThemesViewViewModel.swift in Sources */,
 				FA6202102A83A2B700773EBC /* DetailViewViewModel.swift in Sources */,
 				FA5ADCAE2A7A3424003B8A4C /* TaxiOrder.swift in Sources */,
 				FA2C2FDA2A9260170091C181 /* UIColor+extension.swift in Sources */,

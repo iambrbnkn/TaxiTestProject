@@ -36,4 +36,8 @@ class DefaultTheme: ThemeProtocol{
     var labelBackgroundColor: UIColor {
         return UIColor.clear
     }
+    
+    var iconColor: UIColor {
+        return UIColor.label
+    }
 }

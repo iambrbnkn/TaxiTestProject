@@ -37,5 +37,9 @@ extension UIColor {
     static var labelBackgroundColor: UIColor {
         return Service.selectedTheme.labelBackgroundColor
     }
+    
+    static var iconColor: UIColor {
+        return Service.selectedTheme.iconColor
+    }
 }
 
