@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WhiteTheme: ThemeProtocol {
+final class WhiteTheme: ThemeProtocol {
     var subViewsBackgroundColor: UIColor {
         return #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.968627451, alpha: 1)
     }

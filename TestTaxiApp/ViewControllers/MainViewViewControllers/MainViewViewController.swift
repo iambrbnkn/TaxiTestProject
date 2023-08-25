@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewViewController: UIViewController {
+final class MainViewViewController: UIViewController {
         
     private let viewModel: CollectionViewMethods = MainViewViewModel()
     

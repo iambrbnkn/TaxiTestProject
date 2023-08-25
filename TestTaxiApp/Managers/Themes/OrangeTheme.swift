@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OrangeTheme: ThemeProtocol {
+final class OrangeTheme: ThemeProtocol {
     var subViewsBackgroundColor: UIColor {
         return #colorLiteral(red: 0.8470588235, green: 0.8470588235, blue: 0.862745098, alpha: 1)
     }

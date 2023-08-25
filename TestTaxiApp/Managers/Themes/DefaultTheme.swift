@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DefaultTheme: ThemeProtocol {
+final class DefaultTheme: ThemeProtocol {
     var subViewsBackgroundColor: UIColor {
         return UIColor.secondarySystemBackground
     }

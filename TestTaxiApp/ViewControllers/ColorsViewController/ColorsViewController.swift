@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ColorsViewController: UIViewController {
+final class ColorsViewController: UIViewController {
     
     // MARK: - Views
     
