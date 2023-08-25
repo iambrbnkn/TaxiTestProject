@@ -5,12 +5,11 @@
 //  Created by Vitaliy on 20.08.2023.
 //
 
-import Foundation
 import UIKit
 
-class WhiteTheme: ThemeProtocol{
+class WhiteTheme: ThemeProtocol {
     var subViewsBackgroundColor: UIColor {
-        return UIColor.init(red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
+        return #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.968627451, alpha: 1)
     }
     
     var backgroundColor: UIColor {
@@ -24,7 +23,7 @@ class WhiteTheme: ThemeProtocol{
         return UIColor.black
     }
     var secondaryLabelTextColor: UIColor {
-        return UIColor.init(red: 54/255, green: 54/255, blue: 56/255, alpha: 1)
+        return #colorLiteral(red: 0.2117647059, green: 0.2117647059, blue: 0.2196078431, alpha: 1)
     }
     var buttonBackgroundColor: UIColor {
         return UIColor.systemRed
@@ -36,5 +35,4 @@ class WhiteTheme: ThemeProtocol{
     var iconColor: UIColor {
         return UIColor.black
     }
-
 }

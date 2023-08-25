@@ -9,10 +9,12 @@ import Foundation
 
 final class MainViewCollectionViewCellViewModel {
     
-    //MARK: - Model
+    // MARK: - Model
+    
     private var order: TaxiOrder
             
-    //MARK: - Initial variables
+    // MARK: - Initial variables
+    
     var startCityLabel: String {
         return order.startAddress.city
     }
@@ -28,7 +30,7 @@ final class MainViewCollectionViewCellViewModel {
         return order.endAddress.address
     }
     
-    var date: String {
+   var date: String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = .current
         dateFormatter.dateStyle = .medium
@@ -50,7 +52,8 @@ final class MainViewCollectionViewCellViewModel {
         order.price.amount.convertIntToString(with: order.price.currency)
     }
     
-    //MARK: - Init
+    // MARK: - Init
+    
     init(order: TaxiOrder) {
         self.order = order
     }

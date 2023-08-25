@@ -8,16 +8,18 @@
 import UIKit
 
 protocol NoInterrnetViewDelegate: AnyObject {
-    func refreshButtonTapped() -> Void
+    func refreshButtonTapped()
 }
 
 final class NoInterrnetView: UIView {
     
-    //MARK: -  Delegate
+    // MARK: - Delegate
+    
     public weak var noInterrnetViewDelegate: NoInterrnetViewDelegate?
     
-    //MARK: -  Views
-    private let iconView: UIImageView = {
+    // MARK: - Views
+    
+    private lazy var iconView: UIImageView = {
         let iconView = UIImageView()
         iconView.contentMode = .scaleAspectFit
         iconView.tintColor = .iconColor
@@ -25,7 +27,7 @@ final class NoInterrnetView: UIView {
         return iconView
     }()
 
-    private let label: UILabel = {
+    private lazy var label: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = .primaryLabelTextColor
@@ -35,7 +37,7 @@ final class NoInterrnetView: UIView {
         return label
     }()
     
-    private let refreshButton: UIButton = {
+    private lazy var refreshButton: UIButton = {
        let refreshButton = UIButton()
         refreshButton.backgroundColor = .buttonBackgroundColor
         refreshButton.titleLabel?.textColor = .buttonTittleTextColor
@@ -45,7 +47,8 @@ final class NoInterrnetView: UIView {
         return refreshButton
     }()
     
-    //MARK: - Init
+    // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +59,8 @@ final class NoInterrnetView: UIView {
         fatalError()
     }
 
-    //MARK: - Private Methods
+    // MARK: - Private Methods
+    
     private func addConstraints() {
         NSLayoutConstraint.activate([
             iconView.widthAnchor.constraint(equalToConstant: 90),
@@ -97,4 +101,3 @@ final class NoInterrnetView: UIView {
         self.noInterrnetViewDelegate?.refreshButtonTapped()
     }
 }
-

@@ -7,11 +7,11 @@
 
 import UIKit
 
-
 class ColorsViewController: UIViewController {
     
+    // MARK: - Views
     
-    let titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.textColor = .secondaryLabelTextColor
         titleLabel.text = "What theme do you prefere?"
@@ -20,7 +20,7 @@ class ColorsViewController: UIViewController {
         return titleLabel
     }()
     
-    let systemColorThemeButton: UIButton = {
+    private lazy var systemColorThemeButton: UIButton = {
         let systemColorThemeButton = UIButton()
         systemColorThemeButton.tag = 1
         systemColorThemeButton.setImage(UIImage(named: "systemImg"), for: .normal)
@@ -34,7 +34,7 @@ class ColorsViewController: UIViewController {
         return systemColorThemeButton
     }()
     
-    let blackColorThemeButton: UIButton = {
+    private lazy var blackColorThemeButton: UIButton = {
         let blackColorThemeButton = UIButton()
         blackColorThemeButton.tag = 2
         blackColorThemeButton.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +45,7 @@ class ColorsViewController: UIViewController {
         return blackColorThemeButton
     }()
     
-    let whiteColorThemeButton: UIButton = {
+    private lazy var whiteColorThemeButton: UIButton = {
         let whiteColorThemeButton = UIButton()
         whiteColorThemeButton.translatesAutoresizingMaskIntoConstraints = false
         whiteColorThemeButton.tag = 3
@@ -56,7 +56,7 @@ class ColorsViewController: UIViewController {
         return whiteColorThemeButton
     }()
     
-    let orangeColorThemeButton: UIButton = {
+    private lazy var orangeColorThemeButton: UIButton = {
         let orangeColorThemeButton = UIButton()
         orangeColorThemeButton.translatesAutoresizingMaskIntoConstraints = false
         orangeColorThemeButton.tag = 4
@@ -66,12 +66,15 @@ class ColorsViewController: UIViewController {
         return orangeColorThemeButton
     }()
     
-
+// MARK: - Lifecicle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         reloadUI()
     }
+    
+    // MARK: - Private methods
     
     private func setupUI() {
         view.backgroundColor = .selectedBackgroundColor
@@ -112,16 +115,16 @@ class ColorsViewController: UIViewController {
             orangeColorThemeButton.topAnchor.constraint(equalTo: whiteColorThemeButton.bottomAnchor, constant: 30),
             orangeColorThemeButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             orangeColorThemeButton.widthAnchor.constraint(equalToConstant: 60),
-            orangeColorThemeButton.heightAnchor.constraint(equalToConstant: 60),
+            orangeColorThemeButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
     
     @objc
     private func buttonTapped(_ sender: UIButton) {
-        Service().selectTheme(withTag: sender.tag)
+        ThemeManager().selectTheme(withTag: sender.tag)
         animationForSelectedButton()
         sender.layer.borderColor = UIColor.systemGreen.cgColor
-        UIView.animate(withDuration: 0.2){
+        UIView.animate(withDuration: 0.2) {
             sender.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         }
         self.viewDidLoad()
@@ -134,10 +137,15 @@ class ColorsViewController: UIViewController {
     }
     
     private func animationForSelectedButton() {
-        let buttons: [UIButton] = [systemColorThemeButton,blackColorThemeButton,whiteColorThemeButton,orangeColorThemeButton]
+        let buttons: [UIButton] = [
+            systemColorThemeButton,
+            blackColorThemeButton,
+            whiteColorThemeButton,
+            orangeColorThemeButton
+        ]
         for button in buttons {
             button.layer.borderColor = UIColor.gray.cgColor
-            UIView.animate(withDuration: 0.2){
+            UIView.animate(withDuration: 0.2) {
                 button.transform = CGAffineTransform(scaleX: 1, y: 1)
             }
         }
@@ -149,5 +157,4 @@ class ColorsViewController: UIViewController {
         whiteColorThemeButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         orangeColorThemeButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
-
 }

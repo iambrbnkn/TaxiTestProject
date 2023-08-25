@@ -5,10 +5,9 @@
 //  Created by Vitaliy on 20.08.2023.
 //
 
-import Foundation
 import UIKit
 
-class DefaultTheme: ThemeProtocol{
+class DefaultTheme: ThemeProtocol {
     var subViewsBackgroundColor: UIColor {
         return UIColor.secondarySystemBackground
     }

@@ -11,7 +11,8 @@ class MainViewViewController: UIViewController {
         
     private let viewModel: CollectionViewMethods = MainViewViewModel()
     
-    //MARK: - Views
+    // MARK: - Views
+    
     private lazy var noInternetView = NoInterrnetView()
     
     private lazy var refreshControl: UIRefreshControl = {
@@ -19,7 +20,7 @@ class MainViewViewController: UIViewController {
         refreshControl.tintColor = .label
         return refreshControl
     }()
-    
+        
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -43,7 +44,7 @@ class MainViewViewController: UIViewController {
         return activityIndicatorView
     }()
     
-    //MARK: - LifeCycle
+    // MARK: - LifeCycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -63,7 +64,8 @@ class MainViewViewController: UIViewController {
         viewModel.fetchOrders()
     }
     
-    //MARK: - Private Methods
+    // MARK: - Private Methods
+    
     private func setupUI() {
         view.addSubviews(
             collectionView,
@@ -76,7 +78,7 @@ class MainViewViewController: UIViewController {
         setupNavbarMenu()
     }
     
-    //Constraints
+    // Constraints
     private func addConstraints() {
         NSLayoutConstraint.activate([
             activityIndicatorView.widthAnchor.constraint(equalToConstant: 100),
@@ -92,12 +94,8 @@ class MainViewViewController: UIViewController {
             noInternetView.topAnchor.constraint(equalTo: view.topAnchor),
             noInternetView.leftAnchor.constraint(equalTo: view.leftAnchor),
             noInternetView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            noInternetView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            noInternetView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-    }
-    
-    private func reloadUI() {
-        
     }
     
     private func setUpCollectionView() {
@@ -128,13 +126,14 @@ class MainViewViewController: UIViewController {
                 detailVC.navigationItem.largeTitleDisplayMode = .always
                 self.navigationController?.pushViewController(detailVC, animated: true)
             },
-            UIAction(title: NSLocalizedString("Сredentials", comment: "Реквизиты")) {_ in },
+            UIAction(title: NSLocalizedString("Credentials", comment: "Реквизиты")) { _ in }
         ])
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, image: UIImage(systemName: "ellipsis.rectangle"), menu: barButtonMenu)
     }
 }
 
-//MARK: - Delegate
+// MARK: - Delegate
+
 extension MainViewViewController: MainViewViewModelDelegate, NoInterrnetViewDelegate {
     
     func failToloadInitialOrders() {
@@ -160,7 +159,8 @@ extension MainViewViewController: MainViewViewModelDelegate, NoInterrnetViewDele
     }
 }
  
-//MARK: - CollectionView Delegate
+// MARK: - CollectionView Delegate
+
 extension MainViewViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let viewModel = viewModel.getDetailViewModel(forItemAt: indexPath)
@@ -170,19 +170,20 @@ extension MainViewViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath){
+        if let cell = collectionView.cellForItem(at: indexPath) {
             cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
             }
     }
     
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath){
+        if let cell = collectionView.cellForItem(at: indexPath) {
             cell.transform = CGAffineTransform(scaleX: 1, y: 1)
             }
     }
 }
 
-//MARK: - CollectionView DataSource
+// MARK: - CollectionView DataSource
+
 extension MainViewViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfItems()
@@ -201,7 +202,8 @@ extension MainViewViewController: UICollectionViewDataSource {
     }
 }
 
-//MARK: - CollectionView FlowLayout
+// MARK: - CollectionView FlowLayout
+
 extension MainViewViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let bounds = collectionView.bounds

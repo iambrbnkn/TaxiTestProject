@@ -5,42 +5,31 @@
 //  Created by Vitaliy on 20.08.2023.
 //
 
-import Foundation
 import UIKit
 
-class BlackTheme: ThemeProtocol{
-    
+class BlackTheme: ThemeProtocol {
     var subViewsBackgroundColor: UIColor {
-        return UIColor.init(red: 84/255, green: 84/255, blue: 86/255, alpha: 1)
+        return #colorLiteral(red: 0.3294117647, green: 0.3294117647, blue: 0.337254902, alpha: 1)
     }
-    
     var backgroundColor: UIColor {
         return UIColor.black
     }
-    
     var buttonTittleTextColor: UIColor {
         return UIColor.black
     }
-    
     var primaryLabelTextColor: UIColor {
         return UIColor.white
     }
-    
-    var secondaryLabelTextColor: UIColor  {
-        return UIColor.init(red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
+    var secondaryLabelTextColor: UIColor {
+        return #colorLiteral(red: 0.9490196078, green: 0.968627451, blue: 0.968627451, alpha: 1)
     }
-    
-    var buttonBackgroundColor: UIColor  {
+    var buttonBackgroundColor: UIColor {
         return UIColor.systemRed
     }
-    
     var labelBackgroundColor: UIColor {
         return UIColor.clear
     }
-    
     var iconColor: UIColor {
         return UIColor.white
     }
-
 }
-

@@ -16,13 +16,13 @@ extension Int {
         guard let convertedPrice = Double(newPrice) else {
             return "0"
         }
-        //NumberFormatter
+        // NumberFormatter
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.currencyCode = code
         formatter.maximumFractionDigits = 2
         
         let number = NSNumber(value: convertedPrice)
-        return formatter.string(from: number)!
+        return formatter.string(from: number) ?? ""
     }
 }

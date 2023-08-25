@@ -9,15 +9,16 @@ import UIKit
 
 final class MainViewCollectionViewCell: UICollectionViewCell {
     
-    //MARK: - Views
-    private let separatorView: UIView = {
+    // MARK: - Views
+    
+    private lazy var separatorView: UIView = {
         let separatorView = UIView()
         separatorView.backgroundColor = .secondaryLabel
         separatorView.translatesAutoresizingMaskIntoConstraints = false
         return separatorView
     }()
     
-    private let startIconImage: UIImageView = {
+    private lazy var startIconImage: UIImageView = {
         let startIconImage = UIImageView()
         startIconImage.image = UIImage(systemName: "s.circle")
         startIconImage.contentMode = .scaleAspectFit
@@ -26,7 +27,7 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
         return startIconImage
     }()
     
-    private let endIconImage: UIImageView = {
+    private lazy var endIconImage: UIImageView = {
         let endIconImage = UIImageView()
         endIconImage.image = UIImage(systemName: "e.circle")
         endIconImage.contentMode = .scaleAspectFit
@@ -35,7 +36,7 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
         return endIconImage
     }()
     
-    private let startCityLabel: UILabel = {
+    private lazy var startCityLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.font = .systemFont(ofSize: 14, weight: .medium)
@@ -44,7 +45,7 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let startAddressLabel: UILabel = {
+    private lazy var startAddressLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
         label.font = .systemFont(ofSize: 12, weight: .regular)
@@ -52,7 +53,7 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let endCityLabel: UILabel = {
+    private lazy var endCityLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.font = .systemFont(ofSize: 14, weight: .medium)
@@ -60,7 +61,7 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let endAddressLabel: UILabel = {
+    private lazy var endAddressLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
         label.font = .systemFont(ofSize: 12, weight: .regular)
@@ -68,7 +69,7 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let dateLabel: UILabel = {
+    private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 18, weight: .bold)
@@ -76,7 +77,7 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let priceLabel: UILabel = {
+    private lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 18, weight: .bold)
@@ -84,7 +85,8 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    //MARK: - viewModel
+    // MARK: - viewModel
+    
     weak var viewModel: MainViewCollectionViewCellViewModel? {
         willSet(viewModel) {
             guard let viewModel = viewModel else {
@@ -99,7 +101,8 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    //MARK: - Init
+    // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -109,8 +112,8 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
         fatalError()
     }
 
+    // MARK: - Private Methods
     
-    //MARK: - Private Methods
     private func setupUI() {
         contentView.addSubviews(
             dateLabel,
@@ -135,7 +138,8 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
         contentView.layer.shadowOpacity = 0.3
     }
     
-    //MARK: - Constraints
+    // MARK: - Constraints
+    
     private func addConstraint() {
         NSLayoutConstraint.activate([
             dateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
@@ -196,12 +200,11 @@ final class MainViewCollectionViewCell: UICollectionViewCell {
         separatorView.backgroundColor = .selectedBackgroundColor
         startIconImage.tintColor = .iconColor
         endIconImage.tintColor = .iconColor
-        
-        
     }
 }
 
-//MARK: - Constants
+// MARK: - Constants
+
 extension MainViewCollectionViewCell {
     struct Constants {
         static let cellID = "mainViewTableViewCell"

@@ -7,19 +7,23 @@
 
 import Foundation
 
-//MARK: - Protocol
+// MARK: - Protocol
+
 protocol ApiServiceProtocol {
     func execute<T: Codable> (_ request: String, expecting type: T.Type, completion: @escaping(Result<T, Error>) -> Void)
 }
 
 final class ApiService: ApiServiceProtocol {
-    
     enum ApiServiceError: Error {
         case failedToCreateRequest
         case failedToGetData
     }
     
-    func execute<T: Codable> (_ request: String, expecting type: T.Type, completion: @escaping(Result<T, Error>) -> Void) {
+    func execute<T: Codable> (
+        _ request: String,
+        expecting type: T.Type,
+        completion: @escaping(Result<T, Error>) -> Void
+    ) {
         guard let url = URL(string: request) else {
             return
         }

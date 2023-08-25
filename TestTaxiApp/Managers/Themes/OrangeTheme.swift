@@ -5,17 +5,15 @@
 //  Created by Vitaliy on 20.08.2023.
 //
 
-import Foundation
 import UIKit
 
 class OrangeTheme: ThemeProtocol {
-    
     var subViewsBackgroundColor: UIColor {
-        return UIColor.init(red: 255/255, green: 149/255, blue: 0/255, alpha: 1)
+        return #colorLiteral(red: 0.8470588235, green: 0.8470588235, blue: 0.862745098, alpha: 1)
     }
     
     var backgroundColor: UIColor {
-        return UIColor.init(red: 255/255, green: 159/255, blue: 10/255, alpha: 1)
+        return #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)
     }
     
     var buttonTittleTextColor: UIColor {
@@ -31,7 +29,7 @@ class OrangeTheme: ThemeProtocol {
     }
     
     var buttonBackgroundColor: UIColor {
-        return UIColor.init(red: 255/255, green: 59/255, blue: 48/255, alpha: 1)
+        return #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
     }
     
     var labelBackgroundColor: UIColor {
