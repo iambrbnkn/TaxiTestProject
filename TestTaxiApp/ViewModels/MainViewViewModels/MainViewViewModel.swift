@@ -5,7 +5,7 @@
 //  Created by Vitaliy on 02.08.2023.
 //
 
-import UIKit
+import Foundation
 
 protocol MainViewViewModelDelegate: AnyObject {
     func didLoadInitialOrders()
@@ -16,23 +16,25 @@ protocol CollectionViewMethods: AnyObject {
     var delegate: MainViewViewModelDelegate? { get set }
     
     func numberOfItems() -> Int
-    func fetchOrders() -> Void
+    func fetchOrders()
     func cellViewModel(forIndexPath indexPath: IndexPath) -> MainViewCollectionViewCellViewModel?
     func getDetailViewModel(forItemAt indexPath: IndexPath) -> DetailViewViewModelProtocol
 }
 
-// TODO: - Нейминг
 final class MainViewViewModel: CollectionViewMethods {
     
-    //MARK: - Delegate MainViewViewModelDelegate
+    // MARK: - Delegate MainViewViewModelDelegate
+    
     weak var delegate: MainViewViewModelDelegate?
     
-    //MARK: - Private
+    // MARK: - Private
+    
     private var apiService: ApiServiceProtocol = ApiService()
     
     private var orders: [TaxiOrder] = []
     
-    //MARK: - Methods
+    // MARK: - Methods
+    
     func numberOfItems() -> Int {
         return orders.count
     }
@@ -65,7 +67,8 @@ final class MainViewViewModel: CollectionViewMethods {
     }
 }
 
-//MARK: - Constants
+// MARK: - Constants
+
 private extension MainViewViewModel {
     struct Constants {
        static let ordersUrl = "https://www.roxiemobile.ru/careers/test/orders.json"

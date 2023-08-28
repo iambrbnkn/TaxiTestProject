@@ -7,4 +7,5 @@ target 'TestTaxiApp' do
 
   # Pods for TestTaxiApp
  pod 'Kingfisher', '~> 7.0'
+ pod 'SwiftLint'
 end

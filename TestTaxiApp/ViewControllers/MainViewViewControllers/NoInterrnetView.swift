@@ -8,53 +8,59 @@
 import UIKit
 
 protocol NoInterrnetViewDelegate: AnyObject {
-    func refreshButtonTapped() -> Void
+    func refreshButtonTapped()
 }
 
 final class NoInterrnetView: UIView {
     
+    // MARK: - Delegate
+    
     public weak var noInterrnetViewDelegate: NoInterrnetViewDelegate?
     
-    private let iconView: UIImageView = {
+    // MARK: - Views
+    
+    private lazy var iconView: UIImageView = {
         let iconView = UIImageView()
         iconView.contentMode = .scaleAspectFit
-        iconView.tintColor = .systemBlue
+        iconView.tintColor = .iconColor
         iconView.translatesAutoresizingMaskIntoConstraints = false
         return iconView
     }()
 
-    private let label: UILabel = {
+    private lazy var label: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.textColor = .primaryLabelTextColor
+        label.backgroundColor = .labelBackgroundColor
         label.font = .systemFont(ofSize: 20, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private let refreshButton: UIButton = {
+    private lazy var refreshButton: UIButton = {
        let refreshButton = UIButton()
-        refreshButton.backgroundColor = .systemOrange
+        refreshButton.backgroundColor = .buttonBackgroundColor
+        refreshButton.titleLabel?.textColor = .buttonTittleTextColor
         refreshButton.translatesAutoresizingMaskIntoConstraints = false
         refreshButton.layer.cornerRadius = 10
         refreshButton.setTitle("Refresh", for: .normal)
         return refreshButton
     }()
     
+    // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        isHidden = true
-        refreshButton.addTarget(self, action: #selector(refreshView), for: .touchUpInside)
-        addSubviews(label, iconView, refreshButton)
-        addConstraints()
-        configure()
-
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError()
     }
 
+    // MARK: - Private Methods
+    
     private func addConstraints() {
         NSLayoutConstraint.activate([
             iconView.widthAnchor.constraint(equalToConstant: 90),
@@ -73,6 +79,18 @@ final class NoInterrnetView: UIView {
         ])
     }
     
+    private func setupUI() {
+        isHidden = true
+        addSubviews(
+            label,
+            iconView,
+            refreshButton
+        )
+        refreshButton.addTarget(self, action: #selector(refreshView), for: .touchUpInside)
+        addConstraints()
+        configure()
+    }
+    
     private func configure() {
         label.text = "Something goes wrong"
         iconView.image = UIImage(systemName: "exclamationmark.triangle")
@@ -83,4 +101,3 @@ final class NoInterrnetView: UIView {
         self.noInterrnetViewDelegate?.refreshButtonTapped()
     }
 }
-

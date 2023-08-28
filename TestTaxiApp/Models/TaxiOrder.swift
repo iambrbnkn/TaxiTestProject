@@ -37,5 +37,3 @@ struct Price: Codable {
     let amount: Int
     let currency: String
 }
-
-

@@ -8,12 +8,14 @@
 import Foundation
 import Kingfisher
 
-//MARK: -  Delegate Protocol
+// MARK: - Delegate Protocol
+
 protocol DetailViewViewModelDelegate: AnyObject {
-    func setImage(_ image: UIImage) -> Void
+    func setImage(_ image: UIImage)
 }
 
-//MARK: - VM Protocol
+// MARK: - VM Protocol
+
 protocol DetailViewViewModelProtocol {
     var delegate: DetailViewViewModelDelegate? { get set }
     var regNumber: String { get }
@@ -28,9 +30,8 @@ protocol DetailViewViewModelProtocol {
     var price: String { get }
     var imageUrl: String { get }
     
-    func fetchImage() -> Void
+    func fetchImage()
 }
-
 
 final class DetailViewViewModel: DetailViewViewModelProtocol {
     
@@ -40,7 +41,8 @@ final class DetailViewViewModel: DetailViewViewModelProtocol {
     
     private let order: TaxiOrder
     
-    //MARK: - Initial Variables
+    // MARK: - Initial Variables
+    
     var modelName: String {
         return order.vehicle.modelName
     }
@@ -100,7 +102,8 @@ final class DetailViewViewModel: DetailViewViewModelProtocol {
         order.price.amount.convertIntToString(with: order.price.currency)
     }
     
-    //MARK: - LifeCycle
+    // MARK: - Init
+    
     init(order: TaxiOrder) {
         self.order = order
     }
@@ -113,7 +116,7 @@ final class DetailViewViewModel: DetailViewViewModelProtocol {
                     self?.delegate?.setImage(image)
                 }
             case .failure:
-                guard let image = UIImage(named: "noImage.png", in: Bundle(for: type(of: self!)), with: nil) else {
+                guard let image = UIImage(named: "noImage.png") else {
                     return
                 }
                 DispatchQueue.main.async {
@@ -124,7 +127,8 @@ final class DetailViewViewModel: DetailViewViewModelProtocol {
     }
 }
 
-//MARK: - Constants
+// MARK: - Constants
+
 extension DetailViewViewModel {
      fileprivate struct Constants {
         static let carImageBaseUrl = "https://www.roxiemobile.ru/careers/test/images/"
